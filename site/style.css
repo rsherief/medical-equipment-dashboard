@@ -175,6 +175,7 @@ details.ref summary { cursor: pointer; font-weight: 700; font-size: 14px; color:
   background: rgba(15, 23, 42, .55);
   display: flex; align-items: flex-end; justify-content: center;
 }
+.modal[hidden] { display: none; }
 .modal-card {
   background: var(--card); width: 100%; max-width: 760px;
   border-radius: 20px 20px 0 0; padding: 18px 18px calc(20px + env(safe-area-inset-bottom));
