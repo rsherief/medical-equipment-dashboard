@@ -56,6 +56,30 @@ data/*.xlsx  →  build.py  →  site/data.json  →  static site (GitHub Pages)
 
 3. Run `./update.sh`. A category selector appears automatically in the app.
 
+## Maintenance log & auto-TRC | سجل الصيانة
+
+`data/maintenance_log.xlsx` (sheet **Log**) records every repair and
+preventive-maintenance visit — one row per event:
+
+| التاريخ | الكود | نوع العمل | الوصف | أيام التوقف | التكلفة |
+|---------|-------|-----------|-------|--------------|---------|
+| 2026-07-13 | A41 | إصلاح / وقائية | ... | 3 | 1500 |
+
+From this log the dashboard computes downtime %, cumulative cost,
+MTBF/MTTR, PM due dates (interval per category in `config.json`,
+default 90 days), and a **data-suggested TRC** using the organization's
+own thresholds. Set `replacement_price` in `config.json` to enable the
+cumulative-cost criterion. TRC 5 is never auto-suggested — the safety
+judgment stays with the engineer.
+
+## In-app buttons
+
+- **تقرير PDF** — generates a printable management report in the browser
+  (use the phone's Print → Save as PDF).
+- **تحديث الموقع** — opens the GitHub Actions page; tap "Run workflow" to
+  rebuild the site instantly. The site also rebuilds automatically on every
+  push and every Sunday 06:00 UTC.
+
 ## Local preview
 
 ```bash

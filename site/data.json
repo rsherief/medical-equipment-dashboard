@@ -1,6 +1,7 @@
 {
- "generated_at": "2026-07-13T03:26:01+00:00",
+ "generated_at": "2026-07-13T04:24:02+00:00",
  "current_year": 2026,
+ "actions_url": "https://github.com/rsherief/medical-equipment-dashboard/actions/workflows/pages.yml",
  "part_names": {
   "window": {
    "en": "Porthole window",
@@ -296,6 +297,17 @@
        "A50"
       ]
      }
+    },
+    "maintenance": {
+     "logged_devices": 0,
+     "pm_logged_devices": 0,
+     "pm_overdue": 0,
+     "pm_due_soon": 0,
+     "pm_compliance_pct": null,
+     "repairs_12m": 0,
+     "downtime_days_12m": 0,
+     "cost_12m": 0,
+     "trc_mismatches": 0
     }
    },
    "devices": [
@@ -314,7 +326,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 100,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A52",
@@ -331,7 +346,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 100,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A58",
@@ -348,7 +366,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 100,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D14",
@@ -370,7 +391,10 @@
       }
      ],
      "score": 100,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D16",
@@ -392,7 +416,10 @@
       }
      ],
      "score": 100,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D13",
@@ -409,7 +436,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 95,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D12",
@@ -432,7 +462,10 @@
       }
      ],
      "score": 95,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D10",
@@ -449,7 +482,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 92,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "R1",
@@ -466,7 +502,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 92,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D5",
@@ -488,7 +527,10 @@
       }
      ],
      "score": 92,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A24",
@@ -505,7 +547,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 91,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A26",
@@ -522,7 +567,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 91,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A40",
@@ -539,7 +587,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 91,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A30",
@@ -556,7 +607,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 90,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D8",
@@ -583,7 +637,10 @@
       }
      ],
      "score": 83,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A19",
@@ -610,7 +667,10 @@
       }
      ],
      "score": 81,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D15",
@@ -632,7 +692,10 @@
       }
      ],
      "score": 80,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A14",
@@ -649,7 +712,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 80,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D3",
@@ -666,7 +732,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 80,
-     "recommendation": "replace_now"
+     "recommendation": "replace_now",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A41",
@@ -688,7 +757,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A21",
@@ -710,7 +782,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A20",
@@ -737,7 +812,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A8",
@@ -769,7 +847,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A15",
@@ -791,7 +872,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A36",
@@ -813,7 +897,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A25",
@@ -840,7 +927,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A22",
@@ -872,7 +962,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A47",
@@ -899,7 +992,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A34",
@@ -921,7 +1017,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A16",
@@ -948,7 +1047,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A38",
@@ -970,7 +1072,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A55",
@@ -992,7 +1097,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A9",
@@ -1019,7 +1127,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A23",
@@ -1046,7 +1157,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A17",
@@ -1073,7 +1187,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A27",
@@ -1095,7 +1212,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A49",
@@ -1122,7 +1242,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A56",
@@ -1149,7 +1272,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A1",
@@ -1171,7 +1297,10 @@
       }
      ],
      "score": 79,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D1",
@@ -1198,7 +1327,10 @@
       }
      ],
      "score": 78,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A61",
@@ -1220,7 +1352,10 @@
       }
      ],
      "score": 78,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A59",
@@ -1242,7 +1377,10 @@
       }
      ],
      "score": 78,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A57",
@@ -1259,7 +1397,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 75,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A10",
@@ -1276,7 +1417,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 74,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "R3",
@@ -1293,7 +1437,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 72,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A33",
@@ -1310,7 +1457,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 71,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A48",
@@ -1327,7 +1477,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 71,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A3",
@@ -1344,7 +1497,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 71,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D7",
@@ -1361,7 +1517,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 71,
-     "recommendation": "plan_replacement"
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A4",
@@ -1383,7 +1542,10 @@
       }
      ],
      "score": 62,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A11",
@@ -1405,7 +1567,10 @@
       }
      ],
      "score": 62,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A32",
@@ -1437,7 +1602,10 @@
       }
      ],
      "score": 62,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A37",
@@ -1464,7 +1632,10 @@
       }
      ],
      "score": 62,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D4",
@@ -1486,7 +1657,10 @@
       }
      ],
      "score": 61,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "F1",
@@ -1503,7 +1677,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 60,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D6",
@@ -1520,7 +1697,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 60,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "F2",
@@ -1537,7 +1717,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 60,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A28",
@@ -1554,7 +1737,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 58,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A44",
@@ -1576,7 +1762,10 @@
       }
      ],
      "score": 58,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A43",
@@ -1593,7 +1782,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 56,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A35",
@@ -1610,7 +1802,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 56,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A5",
@@ -1632,7 +1827,10 @@
       }
      ],
      "score": 56,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A29",
@@ -1649,7 +1847,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 54,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D9",
@@ -1666,7 +1867,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 54,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D11",
@@ -1683,7 +1887,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 54,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "D2",
@@ -1700,7 +1907,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 53,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A50",
@@ -1727,7 +1937,10 @@
       }
      ],
      "score": 46,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A42",
@@ -1754,7 +1967,10 @@
       }
      ],
      "score": 46,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A2",
@@ -1786,7 +2002,10 @@
       }
      ],
      "score": 46,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A6",
@@ -1808,7 +2027,10 @@
       }
      ],
      "score": 45,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A18",
@@ -1835,7 +2057,10 @@
       }
      ],
      "score": 44,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A12",
@@ -1862,7 +2087,10 @@
       }
      ],
      "score": 44,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A45",
@@ -1884,7 +2112,10 @@
       }
      ],
      "score": 44,
-     "recommendation": "monitor"
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A7",
@@ -1901,7 +2132,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 38,
-     "recommendation": "ok"
+     "recommendation": "ok",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A13",
@@ -1918,7 +2152,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 37,
-     "recommendation": "ok"
+     "recommendation": "ok",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A53",
@@ -1935,7 +2172,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 36,
-     "recommendation": "ok"
+     "recommendation": "ok",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A51",
@@ -1952,7 +2192,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 36,
-     "recommendation": "ok"
+     "recommendation": "ok",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A39",
@@ -1969,7 +2212,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 36,
-     "recommendation": "ok"
+     "recommendation": "ok",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     },
     {
      "code": "A46",
@@ -1986,7 +2232,10 @@
      "expected_life": 10,
      "parts_needed": [],
      "score": 36,
-     "recommendation": "ok"
+     "recommendation": "ok",
+     "maint": null,
+     "trc_suggested": null,
+     "trc_mismatch": false
     }
    ]
   }

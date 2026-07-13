@@ -29,6 +29,21 @@ const I18N = {
     reason_trc: "التصنيف الفني TRC {trc}", reason_status: "الحالة {status}",
     reason_age: "العمر {age} سنة من عمر افتراضي {life} سنة",
     status_FF: "يعمل بكامل الكفاءة", status_PF: "يعمل جزئياً", status_NF: "لا يعمل",
+    btn_update: "تحديث الموقع", btn_report: "تقرير PDF",
+    maint_card: "الصيانة الوقائية والإصلاحات (آخر 12 شهر)",
+    pm_compliance: "التزام الصيانة الوقائية", pm_overdue: "صيانة وقائية متأخرة", pm_due_soon: "مستحقة خلال 14 يوم",
+    repairs_12m: "إصلاحات", downtime_days: "أيام توقف", cost_12m: "تكلفة الصيانة",
+    maint_hint: "سجّل أعمال الإصلاح والصيانة الوقائية في ملف maintenance_log.xlsx (أو اطلب من Claude تسجيلها) لتفعيل مؤشرات الأداء واقتراح TRC تلقائياً.",
+    maint_history: "سجل الصيانة", last_pm: "آخر صيانة وقائية", next_pm: "الصيانة الوقائية القادمة",
+    overdue: "متأخرة", mtbf: "متوسط الوقت بين الأعطال", mttr: "متوسط زمن الإصلاح", days: "يوم",
+    downtime_12m: "التوقف (12 شهر)", cum_cost: "التكلفة التراكمية",
+    trc_suggested: "TRC مقترح من البيانات", trc_mismatch_note: "يختلف عن التصنيف الحالي — يُنصح بالمراجعة",
+    ev_pm: "وقائية", ev_repair: "إصلاح",
+    report_title: "تقرير حالة الأجهزة الطبية", report_date: "تاريخ التقرير",
+    rep_summary: "ملخص الأسطول", rep_replacement: "خطة الإحلال", rep_parts: "احتياجات قطع الغيار",
+    rep_pm_overdue: "أجهزة متأخرة عن الصيانة الوقائية", rep_metric: "المؤشر", rep_value: "القيمة",
+    rep_part: "القطعة", rep_qty: "الكمية", rep_devices: "الأجهزة",
+    rep_generated: "أُنشئ آلياً من لوحة صيانة الأجهزة الطبية",
   },
   en: {
     app_title: "Medical Equipment Maintenance",
@@ -57,6 +72,21 @@ const I18N = {
     reason_trc: "TRC class {trc}", reason_status: "status {status}",
     reason_age: "{age} years old vs {life}-year expected life",
     status_FF: "Fully functional", status_PF: "Partially functional", status_NF: "Not functional",
+    btn_update: "Update site", btn_report: "PDF report",
+    maint_card: "Preventive maintenance & repairs (last 12 months)",
+    pm_compliance: "PM compliance", pm_overdue: "PM overdue", pm_due_soon: "Due within 14 days",
+    repairs_12m: "Repairs", downtime_days: "Downtime days", cost_12m: "Maintenance cost",
+    maint_hint: "Log repairs and preventive maintenance in maintenance_log.xlsx (or ask Claude to log them) to activate KPIs and automatic TRC suggestions.",
+    maint_history: "Maintenance history", last_pm: "Last PM", next_pm: "Next PM due",
+    overdue: "overdue", mtbf: "MTBF (between failures)", mttr: "MTTR (repair time)", days: "days",
+    downtime_12m: "Downtime (12 mo)", cum_cost: "Cumulative cost",
+    trc_suggested: "Data-suggested TRC", trc_mismatch_note: "differs from current class — review recommended",
+    ev_pm: "PM", ev_repair: "Repair",
+    report_title: "Medical Equipment Status Report", report_date: "Report date",
+    rep_summary: "Fleet summary", rep_replacement: "Replacement plan", rep_parts: "Spare parts needed",
+    rep_pm_overdue: "Devices overdue for preventive maintenance", rep_metric: "Metric", rep_value: "Value",
+    rep_part: "Part", rep_qty: "Qty", rep_devices: "Devices",
+    rep_generated: "Generated automatically from the equipment maintenance dashboard",
   },
 };
 
@@ -117,6 +147,11 @@ function render() {
 function renderDashboard() {
   const s = cat().stats;
   const life = cat().expected_life_years;
+  const actions = `
+  <div class="action-row">
+    <button class="action-btn" id="btn-report">🖨️ ${t("btn_report")}</button>
+    ${DATA.actions_url ? `<a class="action-btn ghost" href="${esc(DATA.actions_url)}" target="_blank" rel="noopener">🔄 ${t("btn_update")}</a>` : ""}
+  </div>`;
   const kpis = `
   <div class="kpi-grid">
     <div class="kpi"><div class="num">${s.total}</div><div class="lbl">${t("kpi_total")}</div></div>
@@ -164,8 +199,21 @@ function renderDashboard() {
     <div class="life-note">${t("expected_life")}: ${life} ${t("years")}${note ? " — " + esc(note) : ""}</div>
   </div>`;
 
+  const m = s.maintenance || {};
+  const maintCard = m.logged_devices > 0 ? `
+  <div class="card"><h2>${t("maint_card")}</h2>
+    <div class="mini-grid">
+      <div class="mini"><div class="num" style="color:${m.pm_overdue ? "var(--bad)" : "var(--ok)"}">${m.pm_overdue}</div><div class="lbl">${t("pm_overdue")}</div></div>
+      <div class="mini"><div class="num">${m.pm_due_soon}</div><div class="lbl">${t("pm_due_soon")}</div></div>
+      <div class="mini"><div class="num">${m.pm_compliance_pct != null ? m.pm_compliance_pct + "%" : "—"}</div><div class="lbl">${t("pm_compliance")}</div></div>
+      <div class="mini"><div class="num">${m.repairs_12m}</div><div class="lbl">${t("repairs_12m")}</div></div>
+      <div class="mini"><div class="num">${m.downtime_days_12m}</div><div class="lbl">${t("downtime_days")}</div></div>
+      <div class="mini"><div class="num">${m.cost_12m.toLocaleString()}</div><div class="lbl">${t("cost_12m")}</div></div>
+    </div>
+  </div>` : `<div class="card hint">💡 ${t("maint_hint")}</div>`;
+
   const updated = `<div class="updated">${t("updated")}: ${new Date(DATA.generated_at).toLocaleString(lang === "ar" ? "ar-EG" : "en-GB")}</div>`;
-  return kpis + recCards + statusStack + trcBars + ageCard + updated;
+  return actions + kpis + recCards + maintCard + statusStack + trcBars + ageCard + updated;
 }
 
 /* ---------- devices list ---------- */
@@ -280,6 +328,28 @@ function openDevice(code) {
     d.age != null ? t("reason_age", { age: d.age, life }) : "",
   ].filter(Boolean).join(" · ");
 
+  const m = d.maint;
+  const fmtDate = (iso) => iso ? new Date(iso).toLocaleDateString(lang === "ar" ? "ar-EG" : "en-GB") : "—";
+  const maintHtml = m ? `
+  <h2 style="margin-top:14px">${t("maint_history")}</h2>
+  <div class="spec-grid">
+    <div class="spec"><div class="k">${t("last_pm")}</div><div class="v">${fmtDate(m.last_pm)}</div></div>
+    <div class="spec"><div class="k">${t("next_pm")}</div><div class="v" style="${m.pm_overdue ? "color:var(--bad)" : ""}">${fmtDate(m.next_pm_due)}${m.pm_overdue ? " ⚠️ " + t("overdue") : ""}</div></div>
+    <div class="spec"><div class="k">${t("downtime_12m")}</div><div class="v">${m.downtime_12m} ${t("days")} (${m.downtime_pct}%)</div></div>
+    <div class="spec"><div class="k">${t("cum_cost")}</div><div class="v">${m.cum_cost.toLocaleString()}</div></div>
+    ${m.mtbf_days != null ? `<div class="spec"><div class="k">${t("mtbf")}</div><div class="v">${m.mtbf_days} ${t("days")}</div></div>` : ""}
+    ${m.mttr_days != null ? `<div class="spec"><div class="k">${t("mttr")}</div><div class="v">${m.mttr_days} ${t("days")}</div></div>` : ""}
+  </div>
+  <ul class="event-list">${m.events.slice().reverse().map((e) => `
+    <li><span class="badge ${e.type === "pm" ? "ok" : "monitor"}">${t("ev_" + e.type)}</span>
+        <span class="ev-date">${fmtDate(e.date)}</span> ${esc(e.desc)}</li>`).join("")}
+  </ul>
+  ${d.trc_suggested ? `
+  <div class="reason" style="${d.trc_mismatch ? "border-inline-start:4px solid var(--bad)" : ""}">
+    <b>${t("trc_suggested")}: TRC ${d.trc_suggested.trc}</b>
+    ${d.trc_mismatch ? `<br>⚠️ ${t("trc_mismatch_note")}` : ""}
+  </div>` : ""}` : "";
+
   const partsHtml = d.parts_needed.length
     ? `<h2 style="margin-top:14px">${t("parts_for_device")}</h2>
        <ul class="fault-list">${d.parts_needed.map((p) =>
@@ -309,6 +379,7 @@ function openDevice(code) {
     ? `<ul class="fault-list">${d.faults.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>`
     : `<div class="life-note">${t("no_faults")}</div>`}
   ${partsHtml}
+  ${maintHtml}
   <div class="reason">
     <b>${t("score")}: ${d.score}/100 — <span style="color:${REC_COLOR[d.recommendation]}">${t("rec_" + d.recommendation)}</span></b><br>
     ${reasons}
@@ -316,11 +387,72 @@ function openDevice(code) {
   $("#modal").hidden = false;
 }
 
+/* ---------- printable report ---------- */
+
+function buildReport() {
+  const c = cat();
+  const s = c.stats;
+  const m = s.maintenance || {};
+  const today = new Date().toLocaleDateString(lang === "ar" ? "ar-EG" : "en-GB");
+  const row = (k, v) => `<tr><td>${k}</td><td><b>${v}</b></td></tr>`;
+
+  const summary = `
+  <table class="rep-table">
+    ${row(t("kpi_total"), s.total)}
+    ${row(t("kpi_ff"), s.by_status.FF)}
+    ${row(t("kpi_pf"), s.by_status.PF)}
+    ${row(t("kpi_nf"), s.by_status.NF)}
+    ${Object.entries(s.by_trc).map(([k, n]) => row("TRC " + k, n)).join("")}
+    ${row(t("avg_age") + " (" + t("years") + ")", s.avg_age ?? "—")}
+    ${row(t("kpi_past_life"), `${s.past_expected_life} (${s.past_expected_life_pct ?? 0}%)`)}
+    ${m.logged_devices ? row(t("pm_compliance"), (m.pm_compliance_pct ?? "—") + "%") +
+      row(t("pm_overdue"), m.pm_overdue) +
+      row(t("repairs_12m") + " / " + t("downtime_days"), `${m.repairs_12m} / ${m.downtime_days_12m}`) +
+      row(t("cost_12m"), m.cost_12m.toLocaleString()) : ""}
+  </table>`;
+
+  const planRows = (r) => c.devices.filter((d) => d.recommendation === r)
+    .map((d) => `<tr><td>${esc(d.code)}</td><td>${esc(d.brand)} ${esc(d.model)}</td><td>${d.year ?? "—"}</td><td>TRC ${d.trc ?? "?"}</td><td>${d.status}</td><td>${d.score}</td></tr>`).join("");
+  const plan = ["replace_now", "plan_replacement"].map((r) => {
+    const rows = planRows(r);
+    return rows ? `<h3 style="color:${REC_COLOR[r]}">${t("rec_" + r)}</h3>
+    <table class="rep-table"><tr><th>${t("code")}</th><th>${t("brand")} / ${t("model")}</th><th>${t("year")}</th><th>TRC</th><th>${t("status")}</th><th>${t("score")}</th></tr>${rows}</table>` : "";
+  }).join("");
+
+  const parts = Object.keys(s.parts_needed).length ? `
+  <h2>${t("rep_parts")}</h2>
+  <table class="rep-table"><tr><th>${t("rep_part")}</th><th>${t("rep_qty")}</th><th>${t("rep_devices")}</th></tr>
+  ${Object.entries(s.parts_needed).map(([k, v]) =>
+    `<tr><td>${esc(partName(k))}</td><td><b>${v.qty}</b></td><td>${v.devices.join("، ")}</td></tr>`).join("")}
+  </table>` : "";
+
+  const overduePm = c.devices.filter((d) => d.maint && d.maint.pm_overdue);
+  const pmSection = overduePm.length ? `
+  <h2>${t("rep_pm_overdue")}</h2>
+  <table class="rep-table"><tr><th>${t("code")}</th><th>${t("brand")} / ${t("model")}</th><th>${t("last_pm")}</th><th>${t("next_pm")}</th></tr>
+  ${overduePm.map((d) => `<tr><td>${esc(d.code)}</td><td>${esc(d.brand)} ${esc(d.model)}</td><td>${d.maint.last_pm}</td><td>${d.maint.next_pm_due}</td></tr>`).join("")}
+  </table>` : "";
+
+  $("#report").innerHTML = `
+  <h1>${t("report_title")} — ${esc(catName(c))}</h1>
+  <div class="rep-meta">${t("report_date")}: ${today}</div>
+  <h2>${t("rep_summary")}</h2>
+  ${summary}
+  <h2>${t("rep_replacement")}</h2>
+  ${plan}
+  ${parts}
+  ${pmSection}
+  <div class="rep-meta">${t("rep_generated")} — ${new Date(DATA.generated_at).toLocaleString(lang === "ar" ? "ar-EG" : "en-GB")}</div>`;
+  window.print();
+}
+
 /* ---------- events ---------- */
 
 function bindViewEvents() {
   document.querySelectorAll(".device-row").forEach((el) =>
     el.addEventListener("click", () => openDevice(el.dataset.code)));
+  const rep = $("#btn-report");
+  if (rep) rep.addEventListener("click", buildReport);
   const search = $("#search");
   if (search) {
     search.addEventListener("input", () => {

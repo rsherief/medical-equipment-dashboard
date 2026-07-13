@@ -9,7 +9,7 @@ config.json). Sheets must follow the standard INC.xlsx column layout:
 import json
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import openpyxl
@@ -17,8 +17,10 @@ import openpyxl
 ROOT = Path(__file__).parent
 DATA_DIR = ROOT / "data"
 OUT_FILE = ROOT / "site" / "data.json"
+MAINT_LOG = DATA_DIR / "maintenance_log.xlsx"
 
 CURRENT_YEAR = datetime.now().year
+TODAY = date.today()
 
 # Column header -> field name (headers as they appear in the standard sheet)
 HEADER_MAP = {
@@ -184,6 +186,118 @@ def extract_parts(fault_line):
     return found
 
 
+def parse_log_date(v):
+    if isinstance(v, datetime):
+        return v.date()
+    if isinstance(v, date):
+        return v
+    s = clean(v)
+    for fmt in ("%Y-%m-%d", "%d/%m/%Y", "%d-%m-%Y", "%Y/%m/%d"):
+        try:
+            return datetime.strptime(s, fmt).date()
+        except ValueError:
+            pass
+    return None
+
+
+def read_maintenance_log():
+    """Read data/maintenance_log.xlsx → {device_code: [event, ...]}.
+
+    Columns: التاريخ | الكود | نوع العمل | الوصف | أيام التوقف | التكلفة
+    نوع العمل containing 'وقائ' (or PM) is preventive; anything else is a repair.
+    """
+    events = {}
+    if not MAINT_LOG.exists():
+        return events
+    ws = openpyxl.load_workbook(MAINT_LOG, data_only=True)["Log"]
+    rows = ws.iter_rows(values_only=True)
+    next(rows, None)  # header
+    for row in rows:
+        d, code, wtype, desc, downtime, cost = (list(row) + [None] * 6)[:6]
+        code = clean(code)
+        d = parse_log_date(d)
+        if not code or not d:
+            continue
+        kind = "pm" if re.search(r"وقائ|pm", clean(wtype), re.IGNORECASE) else "repair"
+        events.setdefault(code, []).append({
+            "date": d.isoformat(),
+            "type": kind,
+            "desc": clean(desc),
+            "downtime": float(downtime) if clean(downtime) not in ("", "N/A") else 0.0,
+            "cost": float(cost) if clean(cost) not in ("", "N/A") else 0.0,
+        })
+    for evs in events.values():
+        evs.sort(key=lambda e: e["date"])
+    return events
+
+
+def maintenance_analytics(evs, pm_interval_days):
+    """Per-device maintenance KPIs from its log events."""
+    if not evs:
+        return None
+    year_ago = (TODAY - timedelta(days=365)).isoformat()
+    repairs = [e for e in evs if e["type"] == "repair"]
+    pms = [e for e in evs if e["type"] == "pm"]
+    recent = [e for e in evs if e["date"] >= year_ago]
+    recent_repairs = [e for e in recent if e["type"] == "repair"]
+
+    downtime_12m = sum(e["downtime"] for e in recent_repairs)
+    mtbf = None
+    if len(repairs) >= 2:
+        dates = [date.fromisoformat(e["date"]) for e in repairs]
+        gaps = [(b - a).days for a, b in zip(dates, dates[1:])]
+        mtbf = round(sum(gaps) / len(gaps))
+    mttr = round(sum(e["downtime"] for e in repairs) / len(repairs), 1) if repairs else None
+
+    last_pm = pms[-1]["date"] if pms else None
+    next_pm_due = None
+    pm_overdue = False
+    if last_pm:
+        due = date.fromisoformat(last_pm) + timedelta(days=pm_interval_days)
+        next_pm_due = due.isoformat()
+        pm_overdue = due < TODAY
+
+    return {
+        "events": evs[-15:],
+        "repairs_12m": len(recent_repairs),
+        "downtime_12m": round(downtime_12m, 1),
+        "downtime_pct": round(100 * downtime_12m / 365, 1),
+        "cost_12m": round(sum(e["cost"] for e in recent), 2),
+        "cum_cost": round(sum(e["cost"] for e in evs), 2),
+        "mtbf_days": mtbf,
+        "mttr_days": mttr,
+        "last_pm": last_pm,
+        "next_pm_due": next_pm_due,
+        "pm_overdue": pm_overdue,
+    }
+
+
+def suggest_trc(age, status, maint, price):
+    """Data-driven TRC suggestion from the organization's own thresholds.
+
+    Uses downtime% (20% / 50%), cumulative cost vs device price (20% / 50%)
+    and age (3 / 7 years). Never suggests TRC 5 — the unsafe / no-spare-parts
+    judgment stays with the engineer.
+    """
+    if not maint:
+        return None
+    downtime_pct = maint["downtime_pct"]
+    cost_ratio = round(maint["cum_cost"] / price, 2) if price else None
+    reasons = {"downtime_pct": downtime_pct, "cost_ratio": cost_ratio}
+
+    if downtime_pct > 50 or (cost_ratio is not None and cost_ratio > 0.5):
+        trc = 4
+    elif downtime_pct > 20 or (cost_ratio is not None and cost_ratio > 0.2):
+        trc = 3
+    elif age is not None and age <= 3 and status == "FF":
+        trc = 1
+    elif age is not None and age <= 7:
+        trc = 2
+    else:
+        trc = 3
+    return {"trc": trc, **reasons}
+
+
 def score_device(trc, status, age, expected_life):
     """Explainable 0-100 replacement priority score."""
     trc = trc or 3
@@ -204,7 +318,7 @@ def score_device(trc, status, age, expected_life):
     return score, rec
 
 
-def read_category(path, cat_cfg, default_life):
+def read_category(path, cat_cfg, default_life, log_events, config):
     wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb.worksheets[0]
     rows = ws.iter_rows(values_only=True)
@@ -247,6 +361,9 @@ def read_category(path, cat_cfg, default_life):
             "faults": faults,
         }
 
+    pm_interval = cat_cfg.get("pm_interval_days", config.get("default_pm_interval_days", 90))
+    price = cat_cfg.get("replacement_price")
+
     result = []
     for d in devices.values():
         age = (CURRENT_YEAR - d["year"]) if d["year"] else None
@@ -257,6 +374,10 @@ def read_category(path, cat_cfg, default_life):
             parts += extract_parts(fl)
         d["parts_needed"] = parts
         d["score"], d["recommendation"] = score_device(d["trc"], d["status"], age, expected_life)
+        d["maint"] = maintenance_analytics(log_events.get(d["code"]), pm_interval)
+        suggestion = suggest_trc(age, d["status"], d["maint"], price)
+        d["trc_suggested"] = suggestion
+        d["trc_mismatch"] = bool(suggestion and d["trc"] and suggestion["trc"] != d["trc"])
         result.append(d)
 
     result.sort(key=lambda d: -d["score"])
@@ -287,6 +408,24 @@ def category_stats(devices, expected_life):
             e["qty"] += p["qty"]
             if d["code"] not in e["devices"]:
                 e["devices"].append(d["code"])
+
+    logged = [d for d in devices if d["maint"]]
+    pm_logged = [d for d in logged if d["maint"]["last_pm"]]
+    soon = (TODAY + timedelta(days=14)).isoformat()
+    maint_stats = {
+        "logged_devices": len(logged),
+        "pm_logged_devices": len(pm_logged),
+        "pm_overdue": sum(1 for d in pm_logged if d["maint"]["pm_overdue"]),
+        "pm_due_soon": sum(1 for d in pm_logged
+                           if not d["maint"]["pm_overdue"] and d["maint"]["next_pm_due"] <= soon),
+        "pm_compliance_pct": round(100 * sum(1 for d in pm_logged if not d["maint"]["pm_overdue"])
+                                   / len(pm_logged)) if pm_logged else None,
+        "repairs_12m": sum(d["maint"]["repairs_12m"] for d in logged),
+        "downtime_days_12m": round(sum(d["maint"]["downtime_12m"] for d in logged), 1),
+        "cost_12m": round(sum(d["maint"]["cost_12m"] for d in logged), 2),
+        "trc_mismatches": sum(1 for d in devices if d["trc_mismatch"]),
+    }
+
     return {
         "total": n,
         "by_status": by_status,
@@ -296,17 +435,21 @@ def category_stats(devices, expected_life):
         "past_expected_life": past_life,
         "past_expected_life_pct": round(100 * past_life / len(ages)) if ages else None,
         "parts_needed": dict(sorted(parts_total.items(), key=lambda kv: -kv[1]["qty"])),
+        "maintenance": maint_stats,
     }
 
 
 def main():
     config = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
     default_life = config.get("default_expected_life_years", 10)
+    log_events = read_maintenance_log()
     categories = {}
     for path in sorted(DATA_DIR.glob("*.xlsx")):
+        if path.name == MAINT_LOG.name or path.name.startswith("~$"):
+            continue
         key = path.stem.lower()
         cat_cfg = config["categories"].get(key, {})
-        devices = read_category(path, cat_cfg, default_life)
+        devices = read_category(path, cat_cfg, default_life, log_events, config)
         stats = category_stats(devices, cat_cfg.get("expected_life_years", default_life))
         categories[key] = {
             "name_en": cat_cfg.get("name_en", key.title()),
@@ -323,6 +466,7 @@ def main():
     out = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "current_year": CURRENT_YEAR,
+        "actions_url": config.get("repo_actions_url", ""),
         "part_names": PART_NAMES,
         "trc_criteria": TRC_CRITERIA,
         "categories": categories,
