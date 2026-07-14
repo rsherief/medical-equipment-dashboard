@@ -38,6 +38,23 @@ const I18N = {
     overdue: "متأخرة", mtbf: "متوسط الوقت بين الأعطال", mttr: "متوسط زمن الإصلاح", days: "يوم",
     downtime_12m: "التوقف (12 شهر)", cum_cost: "التكلفة التراكمية",
     trc_suggested: "TRC مقترح من البيانات", trc_mismatch_note: "يختلف عن التصنيف الحالي — يُنصح بالمراجعة",
+    support_label: "حالة الدعم الفني", certified_label: "شهادة الجودة",
+    cert_yes: "معتمد", cert_no: "غير مسجلة",
+    support_supported: "مدعوم / نشط", support_limited: "دعم محدود",
+    support_eol: "نهاية العمر التشغيلي", support_obsolete: "متقادم",
+    warn_no_history: "لا يوجد سجل صيانة — معايير التوقف والتكلفة غير مؤكدة",
+    warn_support_unknown: "حالة الدعم الفني غير معروفة — افتُرض أنها مدعومة؛ يُرجى التأكد من الوكيل",
+    warn_year_unknown: "سنة الإنتاج غير معروفة",
+    warn_high_downtime: "نسبة التوقف تتجاوز 50%",
+    warn_high_cost: "التكلفة التراكمية تتجاوز 50% من سعر الجهاز",
+    warn_obsolete: "الجهاز متقادم حسب تصنيف الدعم الفني",
+    warn_nf_review: "الجهاز لا يعمل — تقييم TRC 5 قرار هندسي يدوي",
+    warn_cert_missing: "قد يستحق TRC 1 لكن شهادة الجودة غير مسجلة",
+    warn_age_over_7: "العمر يتجاوز 7 سنوات (حد TRC 2)",
+    warn_downtime_over_20: "نسبة التوقف بين 20% و50%",
+    warn_cost_over_20: "التكلفة التراكمية بين 20% و50% من سعر الجهاز",
+    warn_limited_support: "دعم فني محدود — قد تصبح قطع الغيار غير متاحة",
+    warn_eol: "انتهى الدعم الدوري من الشركة المصنعة — يُنصح بالتخطيط للإحلال",
     ev_pm: "وقائية", ev_repair: "إصلاح",
     report_title: "تقرير حالة الأجهزة الطبية", report_date: "تاريخ التقرير",
     rep_summary: "ملخص الأسطول", rep_replacement: "خطة الإحلال", rep_parts: "احتياجات قطع الغيار",
@@ -81,6 +98,23 @@ const I18N = {
     overdue: "overdue", mtbf: "MTBF (between failures)", mttr: "MTTR (repair time)", days: "days",
     downtime_12m: "Downtime (12 mo)", cum_cost: "Cumulative cost",
     trc_suggested: "Data-suggested TRC", trc_mismatch_note: "differs from current class — review recommended",
+    support_label: "Support status", certified_label: "Quality certificate",
+    cert_yes: "Certified", cert_no: "Not recorded",
+    support_supported: "Supported / Active", support_limited: "Limited support",
+    support_eol: "End of life (EOL)", support_obsolete: "Obsolete",
+    warn_no_history: "No maintenance history yet — downtime/cost criteria unverified",
+    warn_support_unknown: "Support status unknown — assumed active; confirm with the agent",
+    warn_year_unknown: "Production year unknown",
+    warn_high_downtime: "Downtime exceeds 50%",
+    warn_high_cost: "Cumulative cost exceeds 50% of device price",
+    warn_obsolete: "Device is Obsolete per support classification",
+    warn_nf_review: "Device is non-functional — TRC 5 assessment is a manual engineering decision",
+    warn_cert_missing: "Could qualify for TRC 1, but no quality certificate is recorded",
+    warn_age_over_7: "Age exceeds the 7-year TRC 2 limit",
+    warn_downtime_over_20: "Downtime is between 20% and 50%",
+    warn_cost_over_20: "Cumulative cost is between 20% and 50% of device price",
+    warn_limited_support: "Limited manufacturer support — spare parts may become unavailable",
+    warn_eol: "Manufacturer ended routine support — plan replacement",
     ev_pm: "PM", ev_repair: "Repair",
     report_title: "Medical Equipment Status Report", report_date: "Report date",
     rep_summary: "Fleet summary", rep_replacement: "Replacement plan", rep_parts: "Spare parts needed",
@@ -344,11 +378,16 @@ function openDevice(code) {
     <li><span class="badge ${e.type === "pm" ? "ok" : "monitor"}">${t("ev_" + e.type)}</span>
         <span class="ev-date">${fmtDate(e.date)}</span> ${esc(e.desc)}</li>`).join("")}
   </ul>
-  ${d.trc_suggested ? `
+` : "";
+
+  const s = d.trc_suggested;
+  const suggestHtml = s ? `
   <div class="reason" style="${d.trc_mismatch ? "border-inline-start:4px solid var(--bad)" : ""}">
-    <b>${t("trc_suggested")}: TRC ${d.trc_suggested.trc}</b>
+    <b>${t("trc_suggested")}: TRC ${s.trc}</b>
     ${d.trc_mismatch ? `<br>⚠️ ${t("trc_mismatch_note")}` : ""}
-  </div>` : ""}` : "";
+    <br><small>${t("support_label")}: ${t("support_" + s.support_status)} · ${t("certified_label")}: ${t(s.certified ? "cert_yes" : "cert_no")}</small>
+    ${s.warnings && s.warnings.length ? `<ul class="fault-list" style="margin:6px 0 0"><li>${s.warnings.map((w) => t("warn_" + w)).join("</li><li>")}</li></ul>` : ""}
+  </div>` : "";
 
   const partsHtml = d.parts_needed.length
     ? `<h2 style="margin-top:14px">${t("parts_for_device")}</h2>
@@ -380,6 +419,7 @@ function openDevice(code) {
     : `<div class="life-note">${t("no_faults")}</div>`}
   ${partsHtml}
   ${maintHtml}
+  ${suggestHtml}
   <div class="reason">
     <b>${t("score")}: ${d.score}/100 — <span style="color:${REC_COLOR[d.recommendation]}">${t("rec_" + d.recommendation)}</span></b><br>
     ${reasons}

@@ -4,10 +4,20 @@
       "name_en": "Infant Incubators",
       "name_ar": "حضّانات الأطفال",
       "expected_life_years": 10,
+      "model_life_years": {
+        "Atom Rabee Incu i": 15,
+        "Atom Air Incu i": 15,
+        "Drager C2000": 15,
+        "ARDO Amelie": 15,
+        "Fanem 1186": 15
+      },
+      "model_support_status": {
+        "Drager C2000": "Limited Supported"
+      },
       "pm_interval_days": 90,
       "replacement_price": null,
-      "life_note_en": "WHO: 7-10 years typical; 15+ if well maintained",
-      "life_note_ar": "حسب منظمة الصحة العالمية: العمر المتوقع 7-10 سنوات، ويمكن أن يصل إلى 15 سنة أو أكثر مع الصيانة الجيدة"
+      "life_note_en": "BEAG: infant incubators 15 years. WHO: 7-10 years typical; 15+ if well maintained",
+      "life_note_ar": "حسب BEAG: العمر المتوقع لحضّانات الأطفال 15 سنة. ومنظمة الصحة العالمية: 7-10 سنوات، ويمكن أن يصل إلى 15 سنة أو أكثر مع الصيانة الجيدة"
     }
   },
   "default_expected_life_years": 10,

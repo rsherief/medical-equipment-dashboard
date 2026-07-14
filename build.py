@@ -30,11 +30,51 @@ HEADER_MAP = {
     "الكود": "code",
     "تاريخ الانتاج": "year",
     "TRC": "trc",
+    "شهادة الجودة": "certified",
     "الحالة الفنية": "status",
     "وصف الحالة الفنية": "description",
 }
 
 STATUS_RANK = {"NF": 3, "PF": 2, "FF": 1}
+
+CERTIFIED_YES = {"yes", "نعم", "معتمد", "true", "1"}
+
+# Manufacturer support status (Asset Management Classification document).
+# Canonical keys used internally; display names + definitions exported to data.json.
+SUPPORT_MAP = {
+    "supported/active": "supported", "supported": "supported", "active": "supported",
+    "limited supported": "limited", "limited support": "limited",
+    "limited": "limited", "legacy": "limited",
+    "eol": "eol", "end of life": "eol",
+    "obsolete": "obsolete", "obsolet": "obsolete", "obsulet": "obsolete",
+}
+
+ASSET_CLASSIFICATION = {
+    "supported": {
+        "label_en": "Supported / Active", "label_ar": "مدعوم / نشط",
+        "def_en": "Manufacturer provides technical support, software updates, training, and spare parts.",
+        "def_ar": "الشركة المصنعة توفر الدعم الفني والتحديثات والتدريب وقطع الغيار.",
+    },
+    "limited": {
+        "label_en": "Limited Support (Legacy)", "label_ar": "دعم محدود",
+        "def_en": "No longer actively marketed but some spare parts and service support remain available.",
+        "def_ar": "لم يعد يُسوَّق ولكن بعض قطع الغيار وخدمات الدعم لا تزال متاحة.",
+    },
+    "eol": {
+        "label_en": "End of Life (EOL)", "label_ar": "نهاية العمر التشغيلي",
+        "def_en": "Manufacturer has ended routine support; parts may be difficult to obtain.",
+        "def_ar": "أنهت الشركة المصنعة الدعم الدوري؛ قد يصعب الحصول على قطع الغيار.",
+    },
+    "obsolete": {
+        "label_en": "Obsolete", "label_ar": "متقادم",
+        "def_en": "Should be considered for replacement due to age, support limitations, technology advancement, or regulatory concerns.",
+        "def_ar": "يجب النظر في استبداله بسبب العمر أو محدودية الدعم أو تقدم التقنية أو الاعتبارات التنظيمية.",
+    },
+}
+
+
+def parse_support(v):
+    return SUPPORT_MAP.get(clean(v).lower())
 
 # Spare-part patterns, most specific first. Each: (part_key, regex)
 PART_PATTERNS = [
@@ -200,35 +240,54 @@ def parse_log_date(v):
     return None
 
 
-def read_maintenance_log():
-    """Read data/maintenance_log.xlsx → {device_code: [event, ...]}.
+LOG_HEADER_MAP = {
+    "التاريخ": "date",
+    "الكود": "code",
+    "حالة الدعم الفني": "support",
+    "نوع العمل": "wtype",
+    "الوصف": "desc",
+    "أيام التوقف": "downtime",
+    "التكلفة": "cost",
+}
 
-    Columns: التاريخ | الكود | نوع العمل | الوصف | أيام التوقف | التكلفة
+
+def read_maintenance_log():
+    """Read data/maintenance_log.xlsx → ({device_code: [event, ...]}, {device_code: support}).
+
+    Columns: التاريخ | الكود | حالة الدعم الفني | نوع العمل | الوصف | أيام التوقف | التكلفة
+    (parsed by header name, so the support column is optional in older files).
     نوع العمل containing 'وقائ' (or PM) is preventive; anything else is a repair.
+    حالة الدعم الفني: latest non-empty value per device wins.
     """
-    events = {}
+    events, support = {}, {}
     if not MAINT_LOG.exists():
-        return events
+        return events, support
     ws = openpyxl.load_workbook(MAINT_LOG, data_only=True)["Log"]
     rows = ws.iter_rows(values_only=True)
-    next(rows, None)  # header
+    headers = [clean(h) for h in next(rows, [])]
+    fields = [LOG_HEADER_MAP.get(h) for h in headers]
     for row in rows:
-        d, code, wtype, desc, downtime, cost = (list(row) + [None] * 6)[:6]
-        code = clean(code)
-        d = parse_log_date(d)
+        rec = {f: v for f, v in zip(fields, row) if f}
+        code = clean(rec.get("code"))
+        d = parse_log_date(rec.get("date"))
         if not code or not d:
             continue
-        kind = "pm" if re.search(r"وقائ|pm", clean(wtype), re.IGNORECASE) else "repair"
+        kind = "pm" if re.search(r"وقائ|pm", clean(rec.get("wtype")), re.IGNORECASE) else "repair"
         events.setdefault(code, []).append({
             "date": d.isoformat(),
             "type": kind,
-            "desc": clean(desc),
-            "downtime": float(downtime) if clean(downtime) not in ("", "N/A") else 0.0,
-            "cost": float(cost) if clean(cost) not in ("", "N/A") else 0.0,
+            "desc": clean(rec.get("desc")),
+            "downtime": float(rec["downtime"]) if clean(rec.get("downtime")) not in ("", "N/A") else 0.0,
+            "cost": float(rec["cost"]) if clean(rec.get("cost")) not in ("", "N/A") else 0.0,
+            "_support": parse_support(rec.get("support")),
         })
-    for evs in events.values():
+    for code, evs in events.items():
         evs.sort(key=lambda e: e["date"])
-    return events
+        for e in evs:
+            s = e.pop("_support", None)
+            if s:
+                support[code] = s  # events are date-sorted, so the latest non-empty wins
+    return events, support
 
 
 def maintenance_analytics(evs, pm_interval_days):
@@ -272,30 +331,93 @@ def maintenance_analytics(evs, pm_interval_days):
     }
 
 
-def suggest_trc(age, status, maint, price):
-    """Data-driven TRC suggestion from the organization's own thresholds.
+def get_expected_life(brand, model, cat_cfg, default_life):
+    """Expected life: model override (BEAG) > category default > global default."""
+    full = f"{brand} {model}".strip().lower()
+    for key, years in cat_cfg.get("model_life_years", {}).items():
+        if key.lower() == full or key.lower() in full:
+            return years
+    return cat_cfg.get("expected_life_years", default_life)
 
-    Uses downtime% (20% / 50%), cumulative cost vs device price (20% / 50%)
-    and age (3 / 7 years). Never suggests TRC 5 — the unsafe / no-spare-parts
-    judgment stays with the engineer.
+
+def model_support_status(brand, model, cat_cfg):
+    """Config-level support default per model (overridden by maintenance-log entries)."""
+    full = f"{brand} {model}".strip().lower()
+    for key, value in cat_cfg.get("model_support_status", {}).items():
+        if key.lower() == full or key.lower() in full:
+            return parse_support(value)
+    return None
+
+
+def suggest_trc(age, status, maint, price, certified=False, support=None):
+    """Data-driven TRC suggestion applying DOC-20260501-WA0011 criteria as AND-logic.
+
+    TRC 1: age ≤ 3 AND fully functional AND certified AND manufacturer support active.
+    TRC 2: age ≤ 7 AND downtime < 20% AND cumulative cost < 20% of price AND supported.
+    TRC 3: discontinued but still supported (incl. limited/EOL), downtime ≤ 50%, cost ≤ 50%.
+    TRC 4: downtime > 50% OR cost > 50% OR support Obsolete OR device is NF.
+    TRC 5 is never auto-suggested — the unsafe / no-spare-parts judgment stays
+    with the engineer (NF devices get TRC 4 + a review warning instead).
+
+    Works without maintenance history: downtime/cost then count as 0 but are
+    flagged unverified. Unknown support is assumed active, with a warning.
+    Warnings are language-neutral codes translated by the frontend.
     """
-    if not maint:
-        return None
-    downtime_pct = maint["downtime_pct"]
-    cost_ratio = round(maint["cum_cost"] / price, 2) if price else None
-    reasons = {"downtime_pct": downtime_pct, "cost_ratio": cost_ratio}
+    downtime_pct = maint["downtime_pct"] if maint else None
+    cost_ratio = round(maint["cum_cost"] / price, 2) if (maint and price) else None
+    warnings = []
 
-    if downtime_pct > 50 or (cost_ratio is not None and cost_ratio > 0.5):
+    if maint is None:
+        warnings.append("no_history")
+    if support is None:
+        support = "supported"
+        warnings.append("support_unknown")
+    if age is None:
+        warnings.append("year_unknown")
+
+    dt = downtime_pct or 0.0
+    cr = cost_ratio or 0.0
+
+    if dt > 50 or cr > 0.5 or support == "obsolete" or status == "NF":
         trc = 4
-    elif downtime_pct > 20 or (cost_ratio is not None and cost_ratio > 0.2):
-        trc = 3
-    elif age is not None and age <= 3 and status == "FF":
+        if dt > 50:
+            warnings.append("high_downtime")
+        if cr > 0.5:
+            warnings.append("high_cost")
+        if support == "obsolete":
+            warnings.append("obsolete")
+        if status == "NF":
+            warnings.append("nf_review")  # engineer should assess whether this is TRC 5
+    elif (age is not None and age <= 3 and status == "FF"
+          and certified and support == "supported"):
         trc = 1
-    elif age is not None and age <= 7:
+    elif (age is not None and age <= 7 and dt < 20 and cr < 0.2
+          and support == "supported"):
         trc = 2
+        if age <= 3 and status == "FF" and not certified:
+            warnings.append("cert_missing")  # would qualify for TRC 1 with a quality certificate
     else:
         trc = 3
-    return {"trc": trc, **reasons}
+        if age is not None and age > 7:
+            warnings.append("age_over_7")
+        if 20 <= dt <= 50:
+            warnings.append("downtime_over_20")
+        if 0.2 <= cr <= 0.5:
+            warnings.append("cost_over_20")
+        if support == "limited":
+            warnings.append("limited_support")
+        if support == "eol":
+            warnings.append("eol")
+
+    return {
+        "trc": trc,
+        "downtime_pct": downtime_pct,
+        "cost_ratio": cost_ratio,
+        "certified": certified,
+        "support_status": support,
+        "unverified": maint is None,
+        "warnings": warnings,
+    }
 
 
 def score_device(trc, status, age, expected_life):
@@ -318,7 +440,7 @@ def score_device(trc, status, age, expected_life):
     return score, rec
 
 
-def read_category(path, cat_cfg, default_life, log_events, config):
+def read_category(path, cat_cfg, default_life, log_events, log_support, config):
     wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb.worksheets[0]
     rows = ws.iter_rows(values_only=True)
@@ -328,7 +450,6 @@ def read_category(path, cat_cfg, default_life, log_events, config):
         sys.exit(f"ERROR: {path.name}: sheet does not follow the standard column layout "
                  f"(expected Arabic headers like {list(HEADER_MAP)})")
 
-    expected_life = cat_cfg.get("expected_life_years", default_life)
     devices = {}
     for row in rows:
         rec = {f: clean(v) for f, v in zip(fields, row) if f}
@@ -338,6 +459,7 @@ def read_category(path, cat_cfg, default_life, log_events, config):
         year = parse_year(rec.get("year"))
         trc = int(m.group(0)) if (m := re.search(r"[1-5]", rec.get("trc", ""))) else None
         status = rec.get("status", "").upper()
+        certified = rec.get("certified", "").lower() in CERTIFIED_YES
         faults = parse_faults(rec.get("description"))
 
         if code in devices:
@@ -348,6 +470,7 @@ def read_category(path, cat_cfg, default_life, log_events, config):
                 d["trc"] = trc
             if STATUS_RANK.get(status, 0) > STATUS_RANK.get(d["status"], 0):
                 d["status"] = status
+            d["certified"] = d["certified"] or certified
             continue
 
         devices[code] = {
@@ -357,6 +480,7 @@ def read_category(path, cat_cfg, default_life, log_events, config):
             "serial": rec.get("serial", ""),
             "year": year,
             "trc": trc,
+            "certified": certified,
             "status": status,
             "faults": faults,
         }
@@ -368,6 +492,7 @@ def read_category(path, cat_cfg, default_life, log_events, config):
     for d in devices.values():
         age = (CURRENT_YEAR - d["year"]) if d["year"] else None
         d["age"] = age
+        expected_life = get_expected_life(d["brand"], d["model"], cat_cfg, default_life)
         d["expected_life"] = expected_life
         parts = []
         for fl in d["faults"]:
@@ -375,7 +500,10 @@ def read_category(path, cat_cfg, default_life, log_events, config):
         d["parts_needed"] = parts
         d["score"], d["recommendation"] = score_device(d["trc"], d["status"], age, expected_life)
         d["maint"] = maintenance_analytics(log_events.get(d["code"]), pm_interval)
-        suggestion = suggest_trc(age, d["status"], d["maint"], price)
+        # support: latest maintenance-log entry wins, else config per-model default
+        support = log_support.get(d["code"]) or model_support_status(d["brand"], d["model"], cat_cfg)
+        suggestion = suggest_trc(age, d["status"], d["maint"], price,
+                                 certified=d["certified"], support=support)
         d["trc_suggested"] = suggestion
         d["trc_mismatch"] = bool(suggestion and d["trc"] and suggestion["trc"] != d["trc"])
         result.append(d)
@@ -384,7 +512,7 @@ def read_category(path, cat_cfg, default_life, log_events, config):
     return result
 
 
-def category_stats(devices, expected_life):
+def category_stats(devices):
     n = len(devices)
     by_status = {"FF": 0, "PF": 0, "NF": 0}
     by_trc = {}
@@ -399,7 +527,7 @@ def category_stats(devices, expected_life):
         by_rec[d["recommendation"]] += 1
         if d["age"] is not None:
             ages.append(d["age"])
-            if d["age"] >= expected_life:
+            if d["age"] >= d["expected_life"]:  # per-device (model-based) life
                 past_life += 1
     parts_total = {}
     for d in devices:
@@ -442,15 +570,15 @@ def category_stats(devices, expected_life):
 def main():
     config = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
     default_life = config.get("default_expected_life_years", 10)
-    log_events = read_maintenance_log()
+    log_events, log_support = read_maintenance_log()
     categories = {}
     for path in sorted(DATA_DIR.glob("*.xlsx")):
         if path.name == MAINT_LOG.name or path.name.startswith("~$"):
             continue
         key = path.stem.lower()
         cat_cfg = config["categories"].get(key, {})
-        devices = read_category(path, cat_cfg, default_life, log_events, config)
-        stats = category_stats(devices, cat_cfg.get("expected_life_years", default_life))
+        devices = read_category(path, cat_cfg, default_life, log_events, log_support, config)
+        stats = category_stats(devices)
         categories[key] = {
             "name_en": cat_cfg.get("name_en", key.title()),
             "name_ar": cat_cfg.get("name_ar", key),
@@ -469,6 +597,7 @@ def main():
         "actions_url": config.get("repo_actions_url", ""),
         "part_names": PART_NAMES,
         "trc_criteria": TRC_CRITERIA,
+        "asset_classification": ASSET_CLASSIFICATION,
         "categories": categories,
     }
     OUT_FILE.parent.mkdir(exist_ok=True)

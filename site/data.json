@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-13T05:11:27+00:00",
+ "generated_at": "2026-07-14T02:48:27+00:00",
  "current_year": 2026,
  "actions_url": "https://github.com/rsherief/medical-equipment-dashboard/actions/workflows/pages.yml",
  "part_names": {
@@ -133,13 +133,39 @@
    ]
   }
  ],
+ "asset_classification": {
+  "supported": {
+   "label_en": "Supported / Active",
+   "label_ar": "مدعوم / نشط",
+   "def_en": "Manufacturer provides technical support, software updates, training, and spare parts.",
+   "def_ar": "الشركة المصنعة توفر الدعم الفني والتحديثات والتدريب وقطع الغيار."
+  },
+  "limited": {
+   "label_en": "Limited Support (Legacy)",
+   "label_ar": "دعم محدود",
+   "def_en": "No longer actively marketed but some spare parts and service support remain available.",
+   "def_ar": "لم يعد يُسوَّق ولكن بعض قطع الغيار وخدمات الدعم لا تزال متاحة."
+  },
+  "eol": {
+   "label_en": "End of Life (EOL)",
+   "label_ar": "نهاية العمر التشغيلي",
+   "def_en": "Manufacturer has ended routine support; parts may be difficult to obtain.",
+   "def_ar": "أنهت الشركة المصنعة الدعم الدوري؛ قد يصعب الحصول على قطع الغيار."
+  },
+  "obsolete": {
+   "label_en": "Obsolete",
+   "label_ar": "متقادم",
+   "def_en": "Should be considered for replacement due to age, support limitations, technology advancement, or regulatory concerns.",
+   "def_ar": "يجب النظر في استبداله بسبب العمر أو محدودية الدعم أو تقدم التقنية أو الاعتبارات التنظيمية."
+  }
+ },
  "categories": {
   "incubators": {
    "name_en": "Infant Incubators",
    "name_ar": "حضّانات الأطفال",
    "expected_life_years": 10,
-   "life_note_en": "WHO: 7-10 years typical; 15+ if well maintained",
-   "life_note_ar": "حسب منظمة الصحة العالمية: العمر المتوقع 7-10 سنوات، ويمكن أن يصل إلى 15 سنة أو أكثر مع الصيانة الجيدة",
+   "life_note_en": "BEAG: infant incubators 15 years. WHO: 7-10 years typical; 15+ if well maintained",
+   "life_note_ar": "حسب BEAG: العمر المتوقع لحضّانات الأطفال 15 سنة. ومنظمة الصحة العالمية: 7-10 سنوات، ويمكن أن يصل إلى 15 سنة أو أكثر مع الصيانة الجيدة",
    "stats": {
     "total": 79,
     "by_status": {
@@ -154,14 +180,14 @@
      "5": 5
     },
     "by_recommendation": {
-     "replace_now": 19,
-     "plan_replacement": 30,
+     "replace_now": 16,
+     "plan_replacement": 33,
      "monitor": 24,
      "ok": 6
     },
     "avg_age": 10.2,
-    "past_expected_life": 45,
-    "past_expected_life_pct": 61,
+    "past_expected_life": 7,
+    "past_expected_life_pct": 9,
     "parts_needed": {
      "humidifier": {
       "qty": 20,
@@ -173,19 +199,19 @@
        "A25",
        "A22",
        "A47",
+       "A59",
        "A9",
        "A23",
        "A17",
        "A49",
        "A56",
-       "A59",
        "A11",
        "A32",
        "D4",
        "A50",
+       "A6",
        "A42",
-       "A2",
-       "A6"
+       "A2"
       ]
      },
      "window_lock": {
@@ -194,13 +220,13 @@
        "A20",
        "A8",
        "A22",
+       "D1",
        "A34",
+       "A61",
        "A16",
        "A55",
        "A27",
        "A56",
-       "D1",
-       "A61",
        "A32",
        "A37",
        "A18",
@@ -215,11 +241,11 @@
        "A15",
        "A36",
        "A25",
+       "D1",
        "A16",
        "A38",
        "A17",
        "A1",
-       "D1",
        "A4",
        "A2"
       ]
@@ -307,7 +333,7 @@
      "repairs_12m": 0,
      "downtime_days_12m": 0,
      "cost_12m": 0,
-     "trc_mismatches": 0
+     "trc_mismatches": 50
     }
    },
    "devices": [
@@ -318,18 +344,31 @@
      "serial": "2510875",
      "year": 2015,
      "trc": 5,
+     "certified": false,
      "status": "NF",
      "faults": [
       "يتم استخدامها كقطع غيار للحضانات المثيلة"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
      "score": 100,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A52",
@@ -338,18 +377,31 @@
      "serial": "25Z0849",
      "year": 2015,
      "trc": 5,
+     "certified": false,
      "status": "NF",
      "faults": [
       "يتم استخدامها كقطع غيار للحضانات المثيلة"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
      "score": 100,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A58",
@@ -358,18 +410,31 @@
      "serial": "2111769",
      "year": 2011,
      "trc": 5,
+     "certified": false,
      "status": "NF",
      "faults": [
       "يتم استخدامها كقطع غيار للحضانات المثيلة"
      ],
      "age": 15,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
      "score": 100,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "D14",
@@ -378,12 +443,13 @@
      "serial": "ZE21653",
      "year": 2009,
      "trc": 5,
+     "certified": false,
      "status": "NF",
      "faults": [
       "مشكلة فى بوردة الكنترول وجارى العرض على الوكيل"
      ],
      "age": 17,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "control_board",
@@ -393,8 +459,19 @@
      "score": 100,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "D16",
@@ -403,12 +480,13 @@
      "serial": "ZE21654",
      "year": 2009,
      "trc": 5,
+     "certified": false,
      "status": "NF",
      "faults": [
       "الماتور عطلان وجارى العرض على الوكيل"
      ],
      "age": 17,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "motor",
@@ -418,8 +496,19 @@
      "score": 100,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "D13",
@@ -428,17 +517,29 @@
      "serial": "XE21380",
      "year": 2009,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 17,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 95,
+     "score": 91,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -448,23 +549,35 @@
      "serial": "ZE21662",
      "year": 2009,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "يعطى رسالة خطأ stuck key",
       "وجارى العرض على الوكيل"
      ],
      "age": 17,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "keypad",
        "qty": 1
       }
      ],
-     "score": 95,
+     "score": 91,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -474,17 +587,29 @@
      "serial": "JM30700",
      "year": 2014,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 12,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 92,
+     "score": 88,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -494,17 +619,30 @@
      "serial": "1430214",
      "year": 2014,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري الاصلاح من قبل فني الادارة الهندسية"
      ],
      "age": 12,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 92,
+     "score": 88,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -514,22 +652,34 @@
      "serial": "JM30698",
      "year": 2014,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "مشكلة فى ال  heater وجارى العرض على الوكيل"
      ],
      "age": 12,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "heater",
        "qty": 1
       }
      ],
-     "score": 92,
+     "score": 88,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -539,17 +689,30 @@
      "serial": "2530066",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 91,
+     "score": 87,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -559,17 +722,30 @@
      "serial": "(NA)",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 91,
+     "score": 87,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -579,17 +755,30 @@
      "serial": "2530073",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 91,
+     "score": 87,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -599,102 +788,30 @@
      "serial": "26Z0841",
      "year": 2016,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 10,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 90,
+     "score": 87,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "D8",
-     "brand": "Drager",
-     "model": "C2000",
-     "serial": "ZE21681",
-     "year": 2009,
-     "trc": 4,
-     "status": "PF",
-     "faults": [
-      "تحتاج شباك",
-      "المرطب لا يعمل"
-     ],
-     "age": 17,
-     "expected_life": 10,
-     "parts_needed": [
-      {
-       "part": "window",
-       "qty": 1
-      },
-      {
-       "part": "humidifier",
-       "qty": 1
-      }
-     ],
-     "score": 83,
-     "recommendation": "replace_now",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "A19",
-     "brand": "Atom",
-     "model": "Rabee Incu i",
-     "serial": "23Y0445",
-     "year": 2013,
-     "trc": 4,
-     "status": "PF",
-     "faults": [
-      "لوك باب المرطب لا يعمل",
-      "المرطب لا يعمل"
-     ],
-     "age": 13,
-     "expected_life": 10,
-     "parts_needed": [
-      {
-       "part": "humidifier_door_lock",
-       "qty": 1
-      },
-      {
-       "part": "humidifier",
-       "qty": 1
-      }
-     ],
-     "score": 81,
-     "recommendation": "replace_now",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "D15",
-     "brand": "Drager",
-     "model": "C2000",
-     "serial": "JM30705",
-     "year": 2014,
-     "trc": 4,
-     "status": "PF",
-     "faults": [
-      "المرطب لا يعمل"
-     ],
-     "age": 12,
-     "expected_life": 10,
-     "parts_needed": [
-      {
-       "part": "humidifier",
-       "qty": 1
-      }
-     ],
-     "score": 80,
-     "recommendation": "replace_now",
-     "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -704,17 +821,31 @@
      "serial": "(NA)",
      "year": null,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": null,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
      "score": 80,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "year_unknown",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -724,18 +855,155 @@
      "serial": "N/A(501)",
      "year": null,
      "trc": 4,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": null,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
      "score": 80,
      "recommendation": "replace_now",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "year_unknown",
+       "nf_review"
+      ]
+     },
      "trc_mismatch": false
+    },
+    {
+     "code": "D8",
+     "brand": "Drager",
+     "model": "C2000",
+     "serial": "ZE21681",
+     "year": 2009,
+     "trc": 4,
+     "certified": false,
+     "status": "PF",
+     "faults": [
+      "تحتاج شباك",
+      "المرطب لا يعمل"
+     ],
+     "age": 17,
+     "expected_life": 15,
+     "parts_needed": [
+      {
+       "part": "window",
+       "qty": 1
+      },
+      {
+       "part": "humidifier",
+       "qty": 1
+      }
+     ],
+     "score": 79,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "age_over_7",
+       "limited_support"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "A19",
+     "brand": "Atom",
+     "model": "Rabee Incu i",
+     "serial": "23Y0445",
+     "year": 2013,
+     "trc": 4,
+     "certified": false,
+     "status": "PF",
+     "faults": [
+      "لوك باب المرطب لا يعمل",
+      "المرطب لا يعمل"
+     ],
+     "age": 13,
+     "expected_life": 15,
+     "parts_needed": [
+      {
+       "part": "humidifier_door_lock",
+       "qty": 1
+      },
+      {
+       "part": "humidifier",
+       "qty": 1
+      }
+     ],
+     "score": 77,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "D15",
+     "brand": "Drager",
+     "model": "C2000",
+     "serial": "JM30705",
+     "year": 2014,
+     "trc": 4,
+     "certified": false,
+     "status": "PF",
+     "faults": [
+      "المرطب لا يعمل"
+     ],
+     "age": 12,
+     "expected_life": 15,
+     "parts_needed": [
+      {
+       "part": "humidifier",
+       "qty": 1
+      }
+     ],
+     "score": 76,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "age_over_7",
+       "limited_support"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A41",
@@ -744,23 +1012,36 @@
      "serial": "2530063",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "كسر فى أحد الابواب"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "door",
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A21",
@@ -769,23 +1050,36 @@
      "serial": "2551289",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "لوك باب المرطب لا يعمل"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier_door_lock",
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A20",
@@ -794,13 +1088,14 @@
      "serial": "2521062",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "لوك باب المرطب لا يعمل",
       "تحتاج عدد (2)لوك شباك"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier_door_lock",
@@ -811,11 +1106,23 @@
        "qty": 2
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A8",
@@ -824,6 +1131,7 @@
      "serial": "2511055",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج عدد (2) شباك",
@@ -831,7 +1139,7 @@
       "المرطب لا يعمل"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window",
@@ -846,11 +1154,23 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A15",
@@ -859,23 +1179,36 @@
      "serial": "2530067",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج شباك"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window",
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A36",
@@ -884,23 +1217,36 @@
      "serial": "2551292",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج شباك"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window",
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A25",
@@ -909,13 +1255,14 @@
      "serial": "25Z0847",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج 2 شباك",
       "المرطب لا يعمل"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window",
@@ -926,11 +1273,23 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A22",
@@ -939,6 +1298,7 @@
      "serial": "2550665",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج عدد (2) لوك شباك",
@@ -946,7 +1306,7 @@
       "لوك باب المرطب لا يعمل"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window_lock",
@@ -961,11 +1321,23 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A47",
@@ -974,13 +1346,14 @@
      "serial": "2520382",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "لوك باب المرطب لا يعمل",
       "المرطب لا يعمل"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier_door_lock",
@@ -991,11 +1364,66 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "D1",
+     "brand": "Drager",
+     "model": "C2000",
+     "serial": "Fy33801",
+     "year": 2016,
+     "trc": 4,
+     "certified": false,
+     "status": "PF",
+     "faults": [
+      "تحتاج شباك",
+      "تحتاج عدد (2) لوك شباك"
+     ],
+     "age": 10,
+     "expected_life": 15,
+     "parts_needed": [
+      {
+       "part": "window",
+       "qty": 1
+      },
+      {
+       "part": "window_lock",
+       "qty": 2
+      }
+     ],
+     "score": 75,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "age_over_7",
+       "limited_support"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A34",
@@ -1004,23 +1432,74 @@
      "serial": "2530068",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج لوك شباك"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window_lock",
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "A61",
+     "brand": "Atom",
+     "model": "Rabee Incu i",
+     "serial": "2650078",
+     "year": 2016,
+     "trc": 4,
+     "certified": false,
+     "status": "PF",
+     "faults": [
+      "تحتاج لوك شباك"
+     ],
+     "age": 10,
+     "expected_life": 15,
+     "parts_needed": [
+      {
+       "part": "window_lock",
+       "qty": 1
+      }
+     ],
+     "score": 75,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A16",
@@ -1029,13 +1508,14 @@
      "serial": "2510880",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج لوك شباك",
       "تحتاج شباك"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window_lock",
@@ -1046,11 +1526,61 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "A59",
+     "brand": "Atom",
+     "model": "Rabee Incu i",
+     "serial": "2640372",
+     "year": 2016,
+     "trc": 4,
+     "certified": false,
+     "status": "PF",
+     "faults": [
+      "المرطب لا يعمل"
+     ],
+     "age": 10,
+     "expected_life": 15,
+     "parts_needed": [
+      {
+       "part": "humidifier",
+       "qty": 1
+      }
+     ],
+     "score": 75,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A38",
@@ -1059,23 +1589,36 @@
      "serial": "2560623",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج شباك"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window",
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A55",
@@ -1084,23 +1627,36 @@
      "serial": "2510873",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج لوك شباك"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window_lock",
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A9",
@@ -1109,13 +1665,14 @@
      "serial": "2551290",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "المرطب لا يعمل",
       "لوك باب المرطب لا يعمل"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier",
@@ -1126,11 +1683,23 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A23",
@@ -1139,13 +1708,14 @@
      "serial": "2550665",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "لوك باب المرطب لا يعمل",
       "المرطب لا يعمل"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier_door_lock",
@@ -1156,11 +1726,23 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A17",
@@ -1169,13 +1751,14 @@
      "serial": "2510881",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج 3 شباك",
       "المرطب لا يعمل"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window",
@@ -1186,11 +1769,23 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A27",
@@ -1199,23 +1794,36 @@
      "serial": "2550663",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج لوك شباك"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window_lock",
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A49",
@@ -1224,13 +1832,14 @@
      "serial": "2521058",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "المرطب لا يعمل",
       "يوجد شرخ فى hood"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier",
@@ -1241,11 +1850,23 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A56",
@@ -1254,13 +1875,14 @@
      "serial": "2551294",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج لوك شباك",
       "المرطب لا يعمل"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window_lock",
@@ -1271,11 +1893,23 @@
        "qty": 1
       }
      ],
-     "score": 79,
+     "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A1",
@@ -1284,123 +1918,36 @@
      "serial": "2511050",
      "year": 2015,
      "trc": 4,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج شباك"
      ],
      "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window",
        "qty": 1
       }
      ],
-     "score": 79,
-     "recommendation": "plan_replacement",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "D1",
-     "brand": "Drager",
-     "model": "C2000",
-     "serial": "Fy33801",
-     "year": 2016,
-     "trc": 4,
-     "status": "PF",
-     "faults": [
-      "تحتاج شباك",
-      "تحتاج عدد (2) لوك شباك"
-     ],
-     "age": 10,
-     "expected_life": 10,
-     "parts_needed": [
-      {
-       "part": "window",
-       "qty": 1
-      },
-      {
-       "part": "window_lock",
-       "qty": 2
-      }
-     ],
-     "score": 78,
-     "recommendation": "plan_replacement",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "A61",
-     "brand": "Atom",
-     "model": "Rabee Incu i",
-     "serial": "2650078",
-     "year": 2016,
-     "trc": 4,
-     "status": "PF",
-     "faults": [
-      "تحتاج لوك شباك"
-     ],
-     "age": 10,
-     "expected_life": 10,
-     "parts_needed": [
-      {
-       "part": "window_lock",
-       "qty": 1
-      }
-     ],
-     "score": 78,
-     "recommendation": "plan_replacement",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "A59",
-     "brand": "Atom",
-     "model": "Rabee Incu i",
-     "serial": "2640372",
-     "year": 2016,
-     "trc": 4,
-     "status": "PF",
-     "faults": [
-      "المرطب لا يعمل"
-     ],
-     "age": 10,
-     "expected_life": 10,
-     "parts_needed": [
-      {
-       "part": "humidifier",
-       "qty": 1
-      }
-     ],
-     "score": 78,
-     "recommendation": "plan_replacement",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "A57",
-     "brand": "Atom",
-     "model": "Rabee Incu i",
-     "serial": "2111773",
-     "year": 2011,
-     "trc": 4,
-     "status": "FF",
-     "faults": [
-      "تعمل بكامل الكفاءة"
-     ],
-     "age": 15,
-     "expected_life": 10,
-     "parts_needed": [],
      "score": 75,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A10",
@@ -1409,98 +1956,64 @@
      "serial": "2770147",
      "year": 2017,
      "trc": 3,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 9,
-     "expected_life": 10,
-     "parts_needed": [],
-     "score": 74,
-     "recommendation": "plan_replacement",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "R3",
-     "brand": "ARDO",
-     "model": "Amelie",
-     "serial": "1430213",
-     "year": 2014,
-     "trc": 4,
-     "status": "FF",
-     "faults": [
-      "تعمل بكامل الكفاءة"
-     ],
-     "age": 12,
-     "expected_life": 10,
-     "parts_needed": [],
-     "score": 72,
-     "recommendation": "plan_replacement",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "A33",
-     "brand": "Atom",
-     "model": "Rabee Incu i",
-     "serial": "2530072",
-     "year": 2015,
-     "trc": 4,
-     "status": "FF",
-     "faults": [
-      "تعمل بكامل الكفاءة"
-     ],
-     "age": 11,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
      "score": 71,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
-     "code": "A48",
+     "code": "A57",
      "brand": "Atom",
      "model": "Rabee Incu i",
-     "serial": "2510876",
-     "year": 2015,
+     "serial": "2111773",
+     "year": 2011,
      "trc": 4,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
-     "age": 11,
-     "expected_life": 10,
+     "age": 15,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 71,
+     "score": 70,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "A3",
-     "brand": "Atom",
-     "model": "Rabee Incu i",
-     "serial": "2511052",
-     "year": 2015,
-     "trc": 4,
-     "status": "FF",
-     "faults": [
-      "تعمل بكامل الكفاءة"
-     ],
-     "age": 11,
-     "expected_life": 10,
-     "parts_needed": [],
-     "score": 71,
-     "recommendation": "plan_replacement",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "D7",
@@ -1509,18 +2022,261 @@
      "serial": "BV38198",
      "year": 2020,
      "trc": 3,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 71,
+     "score": 69,
      "recommendation": "plan_replacement",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "R3",
+     "brand": "ARDO",
+     "model": "Amelie",
+     "serial": "1430213",
+     "year": 2014,
+     "trc": 4,
+     "certified": false,
+     "status": "FF",
+     "faults": [
+      "تعمل بكامل الكفاءة"
+     ],
+     "age": 12,
+     "expected_life": 15,
+     "parts_needed": [],
+     "score": 68,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "A33",
+     "brand": "Atom",
+     "model": "Rabee Incu i",
+     "serial": "2530072",
+     "year": 2015,
+     "trc": 4,
+     "certified": false,
+     "status": "FF",
+     "faults": [
+      "تعمل بكامل الكفاءة"
+     ],
+     "age": 11,
+     "expected_life": 15,
+     "parts_needed": [],
+     "score": 67,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "A48",
+     "brand": "Atom",
+     "model": "Rabee Incu i",
+     "serial": "2510876",
+     "year": 2015,
+     "trc": 4,
+     "certified": false,
+     "status": "FF",
+     "faults": [
+      "تعمل بكامل الكفاءة"
+     ],
+     "age": 11,
+     "expected_life": 15,
+     "parts_needed": [],
+     "score": 67,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "A3",
+     "brand": "Atom",
+     "model": "Rabee Incu i",
+     "serial": "2511052",
+     "year": 2015,
+     "trc": 4,
+     "certified": false,
+     "status": "FF",
+     "faults": [
+      "تعمل بكامل الكفاءة"
+     ],
+     "age": 11,
+     "expected_life": 15,
+     "parts_needed": [],
+     "score": 67,
+     "recommendation": "plan_replacement",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "F1",
+     "brand": "Fanem",
+     "model": "1186",
+     "serial": "CL 5551",
+     "year": null,
+     "trc": 4,
+     "certified": false,
+     "status": "FF",
+     "faults": [
+      "تعمل بكامل الكفاءة"
+     ],
+     "age": null,
+     "expected_life": 15,
+     "parts_needed": [],
+     "score": 60,
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "year_unknown"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "D6",
+     "brand": "Drager",
+     "model": "C2000",
+     "serial": "N/A(500)",
+     "year": null,
+     "trc": 4,
+     "certified": false,
+     "status": "FF",
+     "faults": [
+      "تعمل بكامل الكفاءة"
+     ],
+     "age": null,
+     "expected_life": 15,
+     "parts_needed": [],
+     "score": 60,
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "year_unknown",
+       "limited_support"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "F2",
+     "brand": "Fanem",
+     "model": "1186",
+     "serial": "CL 5552",
+     "year": null,
+     "trc": 4,
+     "certified": false,
+     "status": "FF",
+     "faults": [
+      "تعمل بكامل الكفاءة"
+     ],
+     "age": null,
+     "expected_life": 15,
+     "parts_needed": [],
+     "score": 60,
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "year_unknown"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A4",
@@ -1529,22 +2285,35 @@
      "serial": "2770145",
      "year": 2017,
      "trc": 3,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج شباك"
      ],
      "age": 9,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window",
        "qty": 1
       }
      ],
-     "score": 62,
+     "score": 59,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1554,22 +2323,35 @@
      "serial": "2550664",
      "year": 2017,
      "trc": 3,
+     "certified": false,
      "status": "PF",
      "faults": [
       "المرطب لا يعمل"
      ],
      "age": 9,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier",
        "qty": 1
       }
      ],
-     "score": 62,
+     "score": 59,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1579,6 +2361,7 @@
      "serial": "2760345",
      "year": 2017,
      "trc": 3,
+     "certified": false,
      "status": "PF",
      "faults": [
       "المرطب لا يعمل",
@@ -1586,7 +2369,7 @@
       "لوك باب المرطب لا يعمل"
      ],
      "age": 9,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier",
@@ -1601,10 +2384,22 @@
        "qty": 1
       }
      ],
-     "score": 62,
+     "score": 59,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1614,13 +2409,14 @@
      "serial": "2760343",
      "year": 2017,
      "trc": 3,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج لوك شباك",
       "يوجد كسر فى hood"
      ],
      "age": 9,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window_lock",
@@ -1631,10 +2427,22 @@
        "qty": 1
       }
      ],
-     "score": 62,
+     "score": 59,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1644,82 +2452,35 @@
      "serial": "BH35926",
      "year": 2018,
      "trc": 3,
+     "certified": false,
      "status": "PF",
      "faults": [
       "المرطب لا يعمل"
      ],
      "age": 8,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier",
        "qty": 1
       }
      ],
-     "score": 61,
+     "score": 58,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "F1",
-     "brand": "Fanem",
-     "model": "1186",
-     "serial": "CL 5551",
-     "year": null,
-     "trc": 4,
-     "status": "FF",
-     "faults": [
-      "تعمل بكامل الكفاءة"
-     ],
-     "age": null,
-     "expected_life": 10,
-     "parts_needed": [],
-     "score": 60,
-     "recommendation": "monitor",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "D6",
-     "brand": "Drager",
-     "model": "C2000",
-     "serial": "N/A(500)",
-     "year": null,
-     "trc": 4,
-     "status": "FF",
-     "faults": [
-      "تعمل بكامل الكفاءة"
-     ],
-     "age": null,
-     "expected_life": 10,
-     "parts_needed": [],
-     "score": 60,
-     "recommendation": "monitor",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "F2",
-     "brand": "Fanem",
-     "model": "1186",
-     "serial": "CL 5552",
-     "year": null,
-     "trc": 4,
-     "status": "FF",
-     "faults": [
-      "تعمل بكامل الكفاءة"
-     ],
-     "age": null,
-     "expected_life": 10,
-     "parts_needed": [],
-     "score": 60,
-     "recommendation": "monitor",
-     "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "age_over_7",
+       "limited_support"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1729,18 +2490,31 @@
      "serial": "180500062",
      "year": 2018,
      "trc": 2,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 8,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 58,
+     "score": 55,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A44",
@@ -1749,23 +2523,36 @@
      "serial": "180500061",
      "year": 2018,
      "trc": 2,
+     "certified": false,
      "status": "NF",
      "faults": [
       "حامل الشاشة يحتاج الى تثبيت جاري الاصلاح من قبل فني الادارة الهندسية"
      ],
      "age": 8,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "monitor_mount",
        "qty": 1
       }
      ],
-     "score": 58,
+     "score": 55,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A43",
@@ -1774,18 +2561,31 @@
      "serial": "200400234",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 56,
+     "score": 54,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A35",
@@ -1794,18 +2594,31 @@
      "serial": "200400230",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "NF",
      "faults": [
       "جاري العرض على الشركة الوكيل وشركات متخصصة"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 56,
+     "score": 54,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A5",
@@ -1814,23 +2627,36 @@
      "serial": "200400239",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "NF",
      "faults": [
       "حامل الشاشة يحتاج الى تثبيت جاري الاصلاح من قبل فني الادارة الهندسية"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "monitor_mount",
        "qty": 1
       }
      ],
-     "score": 56,
+     "score": 54,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 4,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "nf_review"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A29",
@@ -1839,17 +2665,30 @@
      "serial": "2760347",
      "year": 2017,
      "trc": 3,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 9,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 54,
+     "score": 51,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1859,17 +2698,30 @@
      "serial": "AR35286",
      "year": 2017,
      "trc": 3,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 9,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 54,
+     "score": 51,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "age_over_7",
+       "limited_support"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1879,17 +2731,30 @@
      "serial": "BR34815",
      "year": 2017,
      "trc": 3,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 9,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 54,
+     "score": 51,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "age_over_7",
+       "limited_support"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1899,17 +2764,30 @@
      "serial": "BH35927",
      "year": 2018,
      "trc": 3,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 8,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 53,
+     "score": 50,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "limited",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "age_over_7",
+       "limited_support"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1919,13 +2797,14 @@
      "serial": "180500066",
      "year": 2018,
      "trc": 2,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج باب المرطب",
       "المرطب لا يعمل"
      ],
      "age": 8,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "humidifier_door",
@@ -1936,10 +2815,59 @@
        "qty": 1
       }
      ],
-     "score": 46,
+     "score": 43,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
+    },
+    {
+     "code": "A6",
+     "brand": "Atom",
+     "model": "Air Incu i",
+     "serial": "190400159",
+     "year": 2019,
+     "trc": 2,
+     "certified": false,
+     "status": "PF",
+     "faults": [
+      "المرطب لا يعمل"
+     ],
+     "age": 7,
+     "expected_life": 15,
+     "parts_needed": [
+      {
+       "part": "humidifier",
+       "qty": 1
+      }
+     ],
+     "score": 43,
+     "recommendation": "monitor",
+     "maint": null,
+     "trc_suggested": {
+      "trc": 2,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -1949,13 +2877,14 @@
      "serial": "180500048",
      "year": 2018,
      "trc": 2,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج عدد (2) لوك باب",
       "المرطب لا يعمل"
      ],
      "age": 8,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "door_lock",
@@ -1966,11 +2895,23 @@
        "qty": 1
       }
      ],
-     "score": 46,
+     "score": 43,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A2",
@@ -1979,6 +2920,7 @@
      "serial": "180500067",
      "year": 2018,
      "trc": 2,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج عدد (4)  لوك باب",
@@ -1986,7 +2928,7 @@
       "المرطب لا يعمل"
      ],
      "age": 8,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "door_lock",
@@ -2001,36 +2943,23 @@
        "qty": 1
       }
      ],
-     "score": 46,
+     "score": 43,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
-    },
-    {
-     "code": "A6",
-     "brand": "Atom",
-     "model": "Air Incu i",
-     "serial": "190400159",
-     "year": 2019,
-     "trc": 2,
-     "status": "PF",
-     "faults": [
-      "المرطب لا يعمل"
-     ],
-     "age": 7,
-     "expected_life": 10,
-     "parts_needed": [
-      {
-       "part": "humidifier",
-       "qty": 1
-      }
-     ],
-     "score": 45,
-     "recommendation": "monitor",
-     "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A18",
@@ -2039,13 +2968,14 @@
      "serial": "200400119",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج لوك باب",
       "تحتاج 2 لوك شباك"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "door_lock",
@@ -2056,10 +2986,21 @@
        "qty": 2
       }
      ],
-     "score": 44,
+     "score": 42,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 2,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -2069,13 +3010,14 @@
      "serial": "200400317",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج لوك شباك",
       "تحتاج عدد (3) لوك باب"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "window_lock",
@@ -2086,10 +3028,21 @@
        "qty": 3
       }
      ],
-     "score": 44,
+     "score": 42,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 2,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -2099,22 +3052,34 @@
      "serial": "200400235",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "PF",
      "faults": [
       "تحتاج 2 لوك باب"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [
       {
        "part": "door_lock",
        "qty": 2
       }
      ],
-     "score": 44,
+     "score": 42,
      "recommendation": "monitor",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 2,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -2124,18 +3089,31 @@
      "serial": "180600578",
      "year": 2018,
      "trc": 2,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 8,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 38,
+     "score": 35,
      "recommendation": "ok",
      "maint": null,
-     "trc_suggested": null,
-     "trc_mismatch": false
+     "trc_suggested": {
+      "trc": 3,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown",
+       "age_over_7"
+      ]
+     },
+     "trc_mismatch": true
     },
     {
      "code": "A13",
@@ -2144,17 +3122,29 @@
      "serial": "190400184",
      "year": 2019,
      "trc": 2,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 7,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 37,
+     "score": 35,
      "recommendation": "ok",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 2,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -2164,17 +3154,29 @@
      "serial": "200400240",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 36,
+     "score": 34,
      "recommendation": "ok",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 2,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -2184,17 +3186,29 @@
      "serial": "200400236",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 36,
+     "score": 34,
      "recommendation": "ok",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 2,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -2204,17 +3218,29 @@
      "serial": "200400237",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 36,
+     "score": 34,
      "recommendation": "ok",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 2,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown"
+      ]
+     },
      "trc_mismatch": false
     },
     {
@@ -2224,17 +3250,29 @@
      "serial": "200400118",
      "year": 2020,
      "trc": 2,
+     "certified": false,
      "status": "FF",
      "faults": [
       "تعمل بكامل الكفاءة"
      ],
      "age": 6,
-     "expected_life": 10,
+     "expected_life": 15,
      "parts_needed": [],
-     "score": 36,
+     "score": 34,
      "recommendation": "ok",
      "maint": null,
-     "trc_suggested": null,
+     "trc_suggested": {
+      "trc": 2,
+      "downtime_pct": null,
+      "cost_ratio": null,
+      "certified": false,
+      "support_status": "supported",
+      "unverified": true,
+      "warnings": [
+       "no_history",
+       "support_unknown"
+      ]
+     },
      "trc_mismatch": false
     }
    ]
