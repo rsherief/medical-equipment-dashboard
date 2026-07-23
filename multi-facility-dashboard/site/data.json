@@ -1,0 +1,3287 @@
+{
+ "generated_at": "2026-07-23T04:07:22+00:00",
+ "current_year": 2026,
+ "actions_url": "https://github.com/rsherief/medical-equipment-dashboard/actions/workflows/pages.yml",
+ "part_names": {
+  "window": {
+   "en": "Porthole window",
+   "ar": "شباك"
+  },
+  "window_lock": {
+   "en": "Porthole window lock",
+   "ar": "لوك شباك"
+  },
+  "door": {
+   "en": "Access door",
+   "ar": "باب"
+  },
+  "door_lock": {
+   "en": "Access door lock",
+   "ar": "لوك باب"
+  },
+  "humidifier": {
+   "en": "Humidifier unit",
+   "ar": "وحدة الترطيب (المرطب)"
+  },
+  "humidifier_door": {
+   "en": "Humidifier door",
+   "ar": "باب المرطب"
+  },
+  "humidifier_door_lock": {
+   "en": "Humidifier door lock",
+   "ar": "لوك باب المرطب"
+  },
+  "hood": {
+   "en": "Hood (canopy)",
+   "ar": "الغطاء (hood)"
+  },
+  "control_board": {
+   "en": "Control board",
+   "ar": "بوردة الكنترول"
+  },
+  "motor": {
+   "en": "Motor",
+   "ar": "الماتور"
+  },
+  "heater": {
+   "en": "Heater",
+   "ar": "الهيتر (heater)"
+  },
+  "keypad": {
+   "en": "Keypad / membrane keys",
+   "ar": "لوحة المفاتيح"
+  },
+  "monitor_mount": {
+   "en": "Monitor mount fixing",
+   "ar": "حامل الشاشة"
+  }
+ },
+ "trc_criteria": [
+  {
+   "trc": 1,
+   "verdict_ar": "يعمل ويعتمد عليه",
+   "verdict_en": "Working and dependable",
+   "criteria_ar": [
+    "أحدث إنتاج للشركة المصنعة ولم يمر على إنتاجه أكثر من 3 سنوات ويعمل بكفاءة وحاصل على شهادة جودة معتمدة"
+   ],
+   "criteria_en": [
+    "Latest production from the manufacturer, less than 3 years old, working efficiently, with a certified quality certificate"
+   ]
+  },
+  {
+   "trc": 2,
+   "verdict_ar": "يعمل ويعتمد عليه",
+   "verdict_en": "Working and dependable",
+   "criteria_ar": [
+    "حديث نسبياً لم يمر على إنتاجه أكثر من 7 سنوات",
+    "يوجد له دعم فني من الشركة المصنعة والوكيل المعتمد",
+    "أعطال الجهاز لا تتخطى 20% من السنة والتكلفة التراكمية لا تزيد عن 20% عن الجهاز المماثل",
+    "الجهاز يستخدم بصورة أساسية ويعتمد عليه"
+   ],
+   "criteria_en": [
+    "Relatively recent, less than 7 years since production",
+    "Technical support available from manufacturer and authorized agent",
+    "Downtime under 20% per year; cumulative cost under 20% of an equivalent device",
+    "Used as primary equipment and relied upon"
+   ]
+  },
+  {
+   "trc": 3,
+   "verdict_ar": "يعمل ويعتمد عليه",
+   "verdict_en": "Working and dependable",
+   "criteria_ar": [
+    "توقف إنتاجه ولكن يوجد له دعم فني من الشركة المصنعة والوكيل المعتمد",
+    "التكلفة التراكمية للجهاز لا تزيد عن 50% من سعر الجهاز",
+    "نسبة الأعطال (Down time) لا تتخطى الـ 50%"
+   ],
+   "criteria_en": [
+    "Production discontinued, but technical support still available from manufacturer and agent",
+    "Cumulative cost under 50% of the device price",
+    "Downtime does not exceed 50%"
+   ]
+  },
+  {
+   "trc": 4,
+   "verdict_ar": "يعمل ولكن لا يعتمد عليه بصورة أساسية",
+   "verdict_en": "Working but not dependable as primary equipment",
+   "criteria_ar": [
+    "توقف إنتاجه ولا يوجد له دعم فني أو قطع غيار من الشركة المصنعة والوكيل المعتمد",
+    "لا يمكن الاعتماد عليه بصورة أساسية",
+    "كثير الأعطال ونسبة الأعطال (Down time) تتخطى الـ 50%",
+    "التكلفة التراكمية للجهاز تزيد عن 50% من سعر الجهاز"
+   ],
+   "criteria_en": [
+    "Production discontinued; no technical support or spare parts from manufacturer or agent",
+    "Cannot be relied upon as primary equipment",
+    "Frequent failures; downtime exceeds 50%",
+    "Cumulative cost exceeds 50% of the device price"
+   ]
+  },
+  {
+   "trc": 5,
+   "verdict_ar": "معطل",
+   "verdict_en": "Out of service",
+   "criteria_ar": [
+    "غير آمن",
+    "لا جدوى فنية أو اقتصادية من إصلاحه",
+    "مستلزمات التشغيل أو قطع الغيار والأكسسوارات الأساسية غير متوفرة"
+   ],
+   "criteria_en": [
+    "Unsafe",
+    "No technical or economic feasibility of repair",
+    "Operating supplies, spare parts, and essential accessories unavailable"
+   ]
+  }
+ ],
+ "asset_classification": {
+  "supported": {
+   "label_en": "Supported / Active",
+   "label_ar": "مدعوم / نشط",
+   "def_en": "Manufacturer provides technical support, software updates, training, and spare parts.",
+   "def_ar": "الشركة المصنعة توفر الدعم الفني والتحديثات والتدريب وقطع الغيار."
+  },
+  "limited": {
+   "label_en": "Limited Support (Legacy)",
+   "label_ar": "دعم محدود",
+   "def_en": "No longer actively marketed but some spare parts and service support remain available.",
+   "def_ar": "لم يعد يُسوَّق ولكن بعض قطع الغيار وخدمات الدعم لا تزال متاحة."
+  },
+  "eol": {
+   "label_en": "End of Life (EOL)",
+   "label_ar": "نهاية العمر التشغيلي",
+   "def_en": "Manufacturer has ended routine support; parts may be difficult to obtain.",
+   "def_ar": "أنهت الشركة المصنعة الدعم الدوري؛ قد يصعب الحصول على قطع الغيار."
+  },
+  "obsolete": {
+   "label_en": "Obsolete",
+   "label_ar": "متقادم",
+   "def_en": "Should be considered for replacement due to age, support limitations, technology advancement, or regulatory concerns.",
+   "def_ar": "يجب النظر في استبداله بسبب العمر أو محدودية الدعم أو تقدم التقنية أو الاعتبارات التنظيمية."
+  }
+ },
+ "facilities": {
+  "main": {
+   "name_en": "Our Equipment",
+   "name_ar": "أجهزتنا",
+   "categories": {
+    "incubators": {
+     "name_en": "Infant Incubators",
+     "name_ar": "حضّانات الأطفال",
+     "expected_life_years": 10,
+     "life_note_en": "BEAG: infant incubators 15 years. WHO: 7-10 years typical; 15+ if well maintained",
+     "life_note_ar": "حسب BEAG: العمر المتوقع لحضّانات الأطفال 15 سنة. ومنظمة الصحة العالمية: 7-10 سنوات، ويمكن أن يصل إلى 15 سنة أو أكثر مع الصيانة الجيدة",
+     "stats": {
+      "total": 79,
+      "by_status": {
+       "FF": 18,
+       "PF": 38,
+       "NF": 23
+      },
+      "by_trc": {
+       "2": 18,
+       "3": 11,
+       "4": 45,
+       "5": 5
+      },
+      "by_recommendation": {
+       "replace_now": 16,
+       "plan_replacement": 33,
+       "monitor": 24,
+       "ok": 6
+      },
+      "avg_age": 10.2,
+      "past_expected_life": 7,
+      "past_expected_life_pct": 9,
+      "parts_needed": {
+       "humidifier": {
+        "qty": 20,
+        "devices": [
+         "D8",
+         "A19",
+         "D15",
+         "A8",
+         "A25",
+         "A22",
+         "A47",
+         "A59",
+         "A9",
+         "A23",
+         "A17",
+         "A49",
+         "A56",
+         "A11",
+         "A32",
+         "D4",
+         "A50",
+         "A6",
+         "A42",
+         "A2"
+        ]
+       },
+       "window_lock": {
+        "qty": 18,
+        "devices": [
+         "A20",
+         "A8",
+         "A22",
+         "D1",
+         "A34",
+         "A61",
+         "A16",
+         "A55",
+         "A27",
+         "A56",
+         "A32",
+         "A37",
+         "A18",
+         "A12"
+        ]
+       },
+       "window": {
+        "qty": 16,
+        "devices": [
+         "D8",
+         "A8",
+         "A15",
+         "A36",
+         "A25",
+         "D1",
+         "A16",
+         "A38",
+         "A17",
+         "A1",
+         "A4",
+         "A2"
+        ]
+       },
+       "door_lock": {
+        "qty": 12,
+        "devices": [
+         "A42",
+         "A2",
+         "A18",
+         "A12",
+         "A45"
+        ]
+       },
+       "humidifier_door_lock": {
+        "qty": 8,
+        "devices": [
+         "A19",
+         "A21",
+         "A20",
+         "A22",
+         "A47",
+         "A9",
+         "A23",
+         "A32"
+        ]
+       },
+       "hood": {
+        "qty": 2,
+        "devices": [
+         "A49",
+         "A37"
+        ]
+       },
+       "monitor_mount": {
+        "qty": 2,
+        "devices": [
+         "A44",
+         "A5"
+        ]
+       },
+       "control_board": {
+        "qty": 1,
+        "devices": [
+         "D14"
+        ]
+       },
+       "motor": {
+        "qty": 1,
+        "devices": [
+         "D16"
+        ]
+       },
+       "keypad": {
+        "qty": 1,
+        "devices": [
+         "D12"
+        ]
+       },
+       "heater": {
+        "qty": 1,
+        "devices": [
+         "D5"
+        ]
+       },
+       "door": {
+        "qty": 1,
+        "devices": [
+         "A41"
+        ]
+       },
+       "humidifier_door": {
+        "qty": 1,
+        "devices": [
+         "A50"
+        ]
+       }
+      },
+      "maintenance": {
+       "logged_devices": 0,
+       "pm_logged_devices": 0,
+       "pm_overdue": 0,
+       "pm_due_soon": 0,
+       "pm_compliance_pct": null,
+       "repairs_12m": 0,
+       "downtime_days_12m": 0,
+       "cost_12m": 0,
+       "trc_mismatches": 50
+      }
+     },
+     "devices": [
+      {
+       "code": "A31",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2510875",
+       "year": 2015,
+       "trc": 5,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "يتم استخدامها كقطع غيار للحضانات المثيلة"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 100,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A52",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "25Z0849",
+       "year": 2015,
+       "trc": 5,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "يتم استخدامها كقطع غيار للحضانات المثيلة"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 100,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A58",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2111769",
+       "year": 2011,
+       "trc": 5,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "يتم استخدامها كقطع غيار للحضانات المثيلة"
+       ],
+       "age": 15,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 100,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "D14",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "ZE21653",
+       "year": 2009,
+       "trc": 5,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "مشكلة فى بوردة الكنترول وجارى العرض على الوكيل"
+       ],
+       "age": 17,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "control_board",
+         "qty": 1
+        }
+       ],
+       "score": 100,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "D16",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "ZE21654",
+       "year": 2009,
+       "trc": 5,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "الماتور عطلان وجارى العرض على الوكيل"
+       ],
+       "age": 17,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "motor",
+         "qty": 1
+        }
+       ],
+       "score": 100,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "D13",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "XE21380",
+       "year": 2009,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 17,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 91,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "D12",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "ZE21662",
+       "year": 2009,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "يعطى رسالة خطأ stuck key",
+        "وجارى العرض على الوكيل"
+       ],
+       "age": 17,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "keypad",
+         "qty": 1
+        }
+       ],
+       "score": 91,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "D10",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "JM30700",
+       "year": 2014,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 12,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 88,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "R1",
+       "brand": "ARDO",
+       "model": "Amelie",
+       "serial": "1430214",
+       "year": 2014,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري الاصلاح من قبل فني الادارة الهندسية"
+       ],
+       "age": 12,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 88,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "D5",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "JM30698",
+       "year": 2014,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "مشكلة فى ال  heater وجارى العرض على الوكيل"
+       ],
+       "age": 12,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "heater",
+         "qty": 1
+        }
+       ],
+       "score": 88,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A24",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2530066",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 87,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A26",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "(NA)",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 87,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A40",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2530073",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 87,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A30",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "26Z0841",
+       "year": 2016,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 10,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 87,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A14",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "(NA)",
+       "year": null,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": null,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 80,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "year_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "D3",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "N/A(501)",
+       "year": null,
+       "trc": 4,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": null,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 80,
+       "recommendation": "replace_now",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "year_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "D8",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "ZE21681",
+       "year": 2009,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج شباك",
+        "المرطب لا يعمل"
+       ],
+       "age": 17,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 1
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 79,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "age_over_7",
+         "limited_support"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A19",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "23Y0445",
+       "year": 2013,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "لوك باب المرطب لا يعمل",
+        "المرطب لا يعمل"
+       ],
+       "age": 13,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier_door_lock",
+         "qty": 1
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 77,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "D15",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "JM30705",
+       "year": 2014,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "المرطب لا يعمل"
+       ],
+       "age": 12,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 76,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "age_over_7",
+         "limited_support"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A41",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2530063",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "كسر فى أحد الابواب"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "door",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A21",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2551289",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "لوك باب المرطب لا يعمل"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier_door_lock",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A20",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2521062",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "لوك باب المرطب لا يعمل",
+        "تحتاج عدد (2)لوك شباك"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier_door_lock",
+         "qty": 1
+        },
+        {
+         "part": "window_lock",
+         "qty": 2
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A8",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2511055",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج عدد (2) شباك",
+        "تحتاج لوك شباك",
+        "المرطب لا يعمل"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 2
+        },
+        {
+         "part": "window_lock",
+         "qty": 1
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A15",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2530067",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج شباك"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A36",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2551292",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج شباك"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A25",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "25Z0847",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج 2 شباك",
+        "المرطب لا يعمل"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 2
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A22",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2550665",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج عدد (2) لوك شباك",
+        "المرطب لا يعمل",
+        "لوك باب المرطب لا يعمل"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window_lock",
+         "qty": 2
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        },
+        {
+         "part": "humidifier_door_lock",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A47",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2520382",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "لوك باب المرطب لا يعمل",
+        "المرطب لا يعمل"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier_door_lock",
+         "qty": 1
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "D1",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "Fy33801",
+       "year": 2016,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج شباك",
+        "تحتاج عدد (2) لوك شباك"
+       ],
+       "age": 10,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 1
+        },
+        {
+         "part": "window_lock",
+         "qty": 2
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "age_over_7",
+         "limited_support"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A34",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2530068",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج لوك شباك"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window_lock",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A61",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2650078",
+       "year": 2016,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج لوك شباك"
+       ],
+       "age": 10,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window_lock",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A16",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2510880",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج لوك شباك",
+        "تحتاج شباك"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window_lock",
+         "qty": 1
+        },
+        {
+         "part": "window",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A59",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2640372",
+       "year": 2016,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "المرطب لا يعمل"
+       ],
+       "age": 10,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A38",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2560623",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج شباك"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A55",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2510873",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج لوك شباك"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window_lock",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A9",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2551290",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "المرطب لا يعمل",
+        "لوك باب المرطب لا يعمل"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier",
+         "qty": 1
+        },
+        {
+         "part": "humidifier_door_lock",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A23",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2550665",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "لوك باب المرطب لا يعمل",
+        "المرطب لا يعمل"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier_door_lock",
+         "qty": 1
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A17",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2510881",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج 3 شباك",
+        "المرطب لا يعمل"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 3
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A27",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2550663",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج لوك شباك"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window_lock",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A49",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2521058",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "المرطب لا يعمل",
+        "يوجد شرخ فى hood"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier",
+         "qty": 1
+        },
+        {
+         "part": "hood",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A56",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2551294",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج لوك شباك",
+        "المرطب لا يعمل"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window_lock",
+         "qty": 1
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A1",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2511050",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج شباك"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 1
+        }
+       ],
+       "score": 75,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A10",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2770147",
+       "year": 2017,
+       "trc": 3,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 9,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 71,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A57",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2111773",
+       "year": 2011,
+       "trc": 4,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 15,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 70,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "D7",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "BV38198",
+       "year": 2020,
+       "trc": 3,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 69,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "R3",
+       "brand": "ARDO",
+       "model": "Amelie",
+       "serial": "1430213",
+       "year": 2014,
+       "trc": 4,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 12,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 68,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A33",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2530072",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 67,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A48",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2510876",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 67,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A3",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2511052",
+       "year": 2015,
+       "trc": 4,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 11,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 67,
+       "recommendation": "plan_replacement",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "F1",
+       "brand": "Fanem",
+       "model": "1186",
+       "serial": "CL 5551",
+       "year": null,
+       "trc": 4,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": null,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 60,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "year_unknown"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "D6",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "N/A(500)",
+       "year": null,
+       "trc": 4,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": null,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 60,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "year_unknown",
+         "limited_support"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "F2",
+       "brand": "Fanem",
+       "model": "1186",
+       "serial": "CL 5552",
+       "year": null,
+       "trc": 4,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": null,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 60,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "year_unknown"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A4",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2770145",
+       "year": 2017,
+       "trc": 3,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج شباك"
+       ],
+       "age": 9,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window",
+         "qty": 1
+        }
+       ],
+       "score": 59,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A11",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2550664",
+       "year": 2017,
+       "trc": 3,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "المرطب لا يعمل"
+       ],
+       "age": 9,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 59,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A32",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2760345",
+       "year": 2017,
+       "trc": 3,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "المرطب لا يعمل",
+        "تحتاج لوك شباك",
+        "لوك باب المرطب لا يعمل"
+       ],
+       "age": 9,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier",
+         "qty": 1
+        },
+        {
+         "part": "window_lock",
+         "qty": 1
+        },
+        {
+         "part": "humidifier_door_lock",
+         "qty": 1
+        }
+       ],
+       "score": 59,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A37",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2760343",
+       "year": 2017,
+       "trc": 3,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج لوك شباك",
+        "يوجد كسر فى hood"
+       ],
+       "age": 9,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window_lock",
+         "qty": 1
+        },
+        {
+         "part": "hood",
+         "qty": 1
+        }
+       ],
+       "score": 59,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "D4",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "BH35926",
+       "year": 2018,
+       "trc": 3,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "المرطب لا يعمل"
+       ],
+       "age": 8,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 58,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "age_over_7",
+         "limited_support"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A28",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "180500062",
+       "year": 2018,
+       "trc": 2,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 8,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 55,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A44",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "180500061",
+       "year": 2018,
+       "trc": 2,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "حامل الشاشة يحتاج الى تثبيت جاري الاصلاح من قبل فني الادارة الهندسية"
+       ],
+       "age": 8,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "monitor_mount",
+         "qty": 1
+        }
+       ],
+       "score": 55,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A43",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400234",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 54,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A35",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400230",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "جاري العرض على الشركة الوكيل وشركات متخصصة"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 54,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A5",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400239",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "NF",
+       "faults": [
+        "حامل الشاشة يحتاج الى تثبيت جاري الاصلاح من قبل فني الادارة الهندسية"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "monitor_mount",
+         "qty": 1
+        }
+       ],
+       "score": 54,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 4,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "nf_review"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A29",
+       "brand": "Atom",
+       "model": "Rabee Incu i",
+       "serial": "2760347",
+       "year": 2017,
+       "trc": 3,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 9,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 51,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "D9",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "AR35286",
+       "year": 2017,
+       "trc": 3,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 9,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 51,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "age_over_7",
+         "limited_support"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "D11",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "BR34815",
+       "year": 2017,
+       "trc": 3,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 9,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 51,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "age_over_7",
+         "limited_support"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "D2",
+       "brand": "Drager",
+       "model": "C2000",
+       "serial": "BH35927",
+       "year": 2018,
+       "trc": 3,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 8,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 50,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "limited",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "age_over_7",
+         "limited_support"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A50",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "180500066",
+       "year": 2018,
+       "trc": 2,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج باب المرطب",
+        "المرطب لا يعمل"
+       ],
+       "age": 8,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier_door",
+         "qty": 1
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 43,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A6",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "190400159",
+       "year": 2019,
+       "trc": 2,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "المرطب لا يعمل"
+       ],
+       "age": 7,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 43,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 2,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A42",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "180500048",
+       "year": 2018,
+       "trc": 2,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج عدد (2) لوك باب",
+        "المرطب لا يعمل"
+       ],
+       "age": 8,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "door_lock",
+         "qty": 2
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 43,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A2",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "180500067",
+       "year": 2018,
+       "trc": 2,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج عدد (4)  لوك باب",
+        "تحتاج شباك",
+        "المرطب لا يعمل"
+       ],
+       "age": 8,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "door_lock",
+         "qty": 4
+        },
+        {
+         "part": "window",
+         "qty": 1
+        },
+        {
+         "part": "humidifier",
+         "qty": 1
+        }
+       ],
+       "score": 43,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A18",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400119",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج لوك باب",
+        "تحتاج 2 لوك شباك"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "door_lock",
+         "qty": 1
+        },
+        {
+         "part": "window_lock",
+         "qty": 2
+        }
+       ],
+       "score": 42,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 2,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A12",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400317",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج لوك شباك",
+        "تحتاج عدد (3) لوك باب"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "window_lock",
+         "qty": 1
+        },
+        {
+         "part": "door_lock",
+         "qty": 3
+        }
+       ],
+       "score": 42,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 2,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A45",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400235",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "PF",
+       "faults": [
+        "تحتاج 2 لوك باب"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [
+        {
+         "part": "door_lock",
+         "qty": 2
+        }
+       ],
+       "score": 42,
+       "recommendation": "monitor",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 2,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A7",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "180600578",
+       "year": 2018,
+       "trc": 2,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 8,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 35,
+       "recommendation": "ok",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 3,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown",
+         "age_over_7"
+        ]
+       },
+       "trc_mismatch": true
+      },
+      {
+       "code": "A13",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "190400184",
+       "year": 2019,
+       "trc": 2,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 7,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 35,
+       "recommendation": "ok",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 2,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A53",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400240",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 34,
+       "recommendation": "ok",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 2,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A51",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400236",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 34,
+       "recommendation": "ok",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 2,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A39",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400237",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 34,
+       "recommendation": "ok",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 2,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown"
+        ]
+       },
+       "trc_mismatch": false
+      },
+      {
+       "code": "A46",
+       "brand": "Atom",
+       "model": "Air Incu i",
+       "serial": "200400118",
+       "year": 2020,
+       "trc": 2,
+       "certified": false,
+       "status": "FF",
+       "faults": [
+        "تعمل بكامل الكفاءة"
+       ],
+       "age": 6,
+       "expected_life": 15,
+       "parts_needed": [],
+       "score": 34,
+       "recommendation": "ok",
+       "maint": null,
+       "trc_suggested": {
+        "trc": 2,
+        "downtime_pct": null,
+        "cost_ratio": null,
+        "certified": false,
+        "support_status": "supported",
+        "unverified": true,
+        "warnings": [
+         "no_history",
+         "support_unknown"
+        ]
+       },
+       "trc_mismatch": false
+      }
+     ]
+    }
+   }
+  }
+ }
+}

@@ -28,11 +28,19 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install openpyxl
-      - name: Rebuild data.json from Excel files
+      - name: Rebuild main dashboard data.json
         run: python3 build.py
+      - name: Rebuild multi-facility dashboard data.json
+        run: cd multi-facility-dashboard && python3 build.py
+      - name: Stage combined site (main at /, multi-facility at /multi-facility-dashboard/)
+        run: |
+          mkdir -p _site_combined
+          cp -r site/. _site_combined/
+          mkdir -p _site_combined/multi-facility-dashboard
+          cp -r multi-facility-dashboard/site/. _site_combined/multi-facility-dashboard/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: _site_combined
       - id: deployment
         uses: actions/deploy-pages@v4

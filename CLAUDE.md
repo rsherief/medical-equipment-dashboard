@@ -19,6 +19,17 @@ data/*.xlsx  →  python3 build.py  →  site/data.json  →  GitHub Pages
 - CI also runs build.py (GitHub Actions: on push, weekly cron, and manual
   dispatch — the in-app "تحديث الموقع" button links to the workflow page).
 
+There is a second, independent app in `multi-facility-dashboard/` — a
+standalone copy that tracks multiple hospitals'/departments' fleets
+(switchable via a listbox), each an isolated dataset. It has its own
+`data/`, `site/`, `build.py`, `config.json`, `update.sh`, and `CLAUDE.md`
+(read that file when working inside that folder). The same
+`.github/workflows/pages.yml` builds both apps and deploys them together —
+this one at `/`, the other at `/multi-facility-dashboard/`. **Do not read
+or write files under `multi-facility-dashboard/` when working on this
+(root) app, and vice versa — they are deliberately separate, not shared
+state.**
+
 ## Data standard (every data/*.xlsx)
 
 Arabic headers, one device per row (matched by header name, not position):
