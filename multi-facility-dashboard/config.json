@@ -24,6 +24,14 @@
     "main": {
       "name_en": "Our Equipment",
       "name_ar": "أجهزتنا"
+    },
+    "al_noor_hospital_nicu": {
+      "name_en": "Al-Noor Hospital — NICU",
+      "name_ar": "مستشفى النور — الحضانات",
+      "hospital_en": "Al-Noor Hospital",
+      "hospital_ar": "مستشفى النور",
+      "department_en": "NICU",
+      "department_ar": "الحضانات"
     }
   },
   "default_expected_life_years": 10,
